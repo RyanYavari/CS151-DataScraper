@@ -1,1 +1,14 @@
 # CS151-GroupProject
+##Group 4: Shirley Li, Emanuel Navarro-Ortiz, Ryan Yavari##
+
+###Our High-Level Plan and Approach###
+Data Scraper will identify the client’s target consumer(s) and recommend most effective marketing strategies to ensure the client receives maximum engagement. Data Scraper will discover potential consumers via scanning for tags or captions on social media sites that have relevant keywords in regards to the client’s product. Then, Data Scraper will compile a list of users from a social media platform that the client can use to send their social media campaign to. Data Scraper will also recommend a type of social media campaign (i.e. Instagram story, tweet, etc.) that should be used to target certain demographics. For example, if the product is applicable for middle-aged or older people, Data Scraper would likely recommend Facebook or Youtube. If the product is aimed towards younger people, then Data Scraper would likely recommend Tiktok, Snapchat, and Instagram. The client can choose which recommendations to take and kickstart their marketing campaign!
+
+###User Operations###
+* The user is the client hoping to determine their business’s target consumer base and receive an effective marketing strategy to reach those consumers. 
+* When the user first boots up Data Scraper, they are brought to a sign-up screen where they can create an account for their business. 
+* After signing up, they are brought to the home screen of Data Scraper where they input the mission statement of the business, the product(s), and the background information of the business (i.e. office address, business size). 
+* After entering enough information, Data Scraper will pick out demographics that match the business and product descriptions and allow the client to choose which demographics to target. 
+* After the client determines which demographic to develop a marketing campaign for, Data Scraper will recommend a social media campaign targeted towards social media users that match those demographics. 
+* The client will then review the social media campaign details and confirm if they feel like the recommendations are fitting. 
+* Then, they can apply our recommendations to their marketing strategy and execute the social media campaign. 
