@@ -6,14 +6,14 @@ Imagine you are a budding new business owner and you are trying to market your p
 
 ### Previous Works ####
 The market for data scraping is huge as many advertisements are geared towards target audiences. Without data scraping, businesses wouldn't have an idea of where to start their pitch. Some applications that use data scraping are:
-[1] Supermetrics
-[2] WebScraper
+[1] Supermetrics and
+[2] WebScraper.
 
 ### Intended Usage and Environment ###
 DataScrapers will be ran on popular social media platforms (Tiktok, Twitter, Instagram, etc.) to retrieve username handles and data. The client will then use these handles to reach out to target customers and market their business. 
 
 ### Our High-Level Plan and Approach ###
-Data Scraper will identify the client’s target consumer(s) and recommend most effective marketing strategies to ensure the client receives maximum engagement. Data Scraper will discover potential consumers via scanning for tags or captions on social media sites that have relevant keywords in regards to the client’s product. Then, Data Scraper will compile a list of users from a social media platform that the client can use to send their social media campaign to. Data Scraper will also recommend a type of social media campaign (i.e. Instagram story, tweet, etc.) that should be used to target certain demographics. For example, if the product is applicable for middle-aged or older people, Data Scraper would likely recommend Facebook or Youtube. If the product is aimed towards younger people, then Data Scraper would likely recommend Tiktok, Snapchat, and Instagram. The client can choose which recommendations to take and kickstart their marketing campaign!
+Data Scraper will identify the client’s target consumer(s) and recommend most effective marketing strategies to ensure the client receives maximum engagement. Data Scraper will discover potential consumers via scanning for tags or captions on social media sites that have relevant keywords in regards to the client’s product. Then, Data Scraper will compile a list of username handles from a social media platform that the client can use to send their social media campaign to. Data Scraper will also recommend a type of social media campaign (i.e. Instagram story, tweet, etc.) that should be used to target certain demographics. For example, if the product is applicable for middle-aged or older people, Data Scraper would likely recommend Facebook or Youtube. If the product is aimed towards younger people, then Data Scraper would likely recommend Tiktok, Snapchat, and Instagram. The client can choose which recommendations to take and kickstart their marketing campaign!
 
 ### Functionality ###
 What better way to reach those consumers than by using the DataScrappers bayesian approach in targeting valuable customers. DataScrappers uses a probabilistic approach where data is gathered on enthusiastic customers who have self selected themselves to be a valued customer of your product.
