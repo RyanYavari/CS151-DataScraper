@@ -1,4 +1,4 @@
-# CS151-DataScraper
+# CS151-DataScraper UML Diagrams
 
 | Diagram       | Summary       | 
 | ------------- |:-------------| 
