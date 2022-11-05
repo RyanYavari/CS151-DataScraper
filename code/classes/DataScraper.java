@@ -21,13 +21,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class Qwitter extends JFrame {
+public class DataScraper extends JFrame {
 	
 	private HashMap<String, User> users;
 	
-	public Qwitter() {
+	public DataScraper() {
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setTitle("Qwitter");
+		this.setTitle("DataScraper");
 		this.setSize(800, 800);
 		setUsers(new HashMap<String, User>());
 		
@@ -394,8 +394,8 @@ public class Qwitter extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		Qwitter qwitter = new Qwitter();
-		qwitter.getUsers().put("SL-9648", new User("shirley", "li", "sli@gmail.com", "abcDEF123:", "SL-9648"));
+		DataScraper dataScraper = new DataScraper();
+		dataScraper.getUsers().put("SL-9648", new User("shirley", "li", "sli@gmail.com", "abcDEF123:", "SL-9648"));
 	}
 
 }
