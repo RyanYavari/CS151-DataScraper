@@ -1,5 +1,6 @@
 package classes;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -59,6 +60,7 @@ public class DataScraper extends JFrame {
 
 		JButton signUpButton = new JButton();
 		signUpButton.setText("Sign up");
+		signUpButton.setBackground(Color.pink);
 		signUpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
