@@ -46,6 +46,7 @@ public class DataScraper extends JFrame {
 		
 		signUpButtonPanel.setLayout(new BoxLayout(signUpButtonPanel, BoxLayout.Y_AXIS));
 		signUpButtonPanel.setBorder(BorderFactory.createEmptyBorder(200, 200, 200, 200));
+		signUpButtonPanel.setComponentOrientation(getComponentOrientation());
 		signUpButtonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		this.getContentPane().setBackground(Color.pink);
@@ -57,23 +58,17 @@ public class DataScraper extends JFrame {
 		
 		JLabel welcomeTitle = new JLabel("DataScraper", JLabel.CENTER);
 		welcomeTitle.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		welcomeTitle.setAlignmentX(CENTER_ALIGNMENT);
 		signUpButtonPanel.add(welcomeTitle);
 		
-		
-//		signUpButtonPanel.add(Box.createRigidArea(new Dimension(100,10)));
-		
-		
-//		JPanel margin = new JPanel();
-//		margin.setPreferredSize(new Dimension(this.getWidth()/6, 30));
-//		margin.setBackground(Color.pink);
-//		signUpButtonPanel.add(margin);
+		signUpButtonPanel.add(Box.createVerticalStrut(30));
+
 		
 	
 		
 		JButton loginButton = new JButton();
 		loginButton.setText("Login");
-		//loginButton.setPreferredSize(new Dimension(200, 100));
-		loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		loginButton.setAlignmentX(CENTER_ALIGNMENT);
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -92,7 +87,7 @@ public class DataScraper extends JFrame {
 		JButton signUpButton = new JButton();
 		signUpButton.setText("Sign up");
 		//signUpButton.setPreferredSize(new Dimension(200, 100));
-		signUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		signUpButton.setAlignmentX(CENTER_ALIGNMENT);
 		signUpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -137,6 +132,7 @@ public class DataScraper extends JFrame {
 		JTextField passwordField = new JPasswordField(15);
 		
 		JPanel firstName = new JPanel();
+		firstName.setBackground(Color.pink);
 		firstName.setLayout(new GridBagLayout());
 		firstName.add(firstNameLabel, gbc);
 		gbc.gridy = 1;
@@ -148,6 +144,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel lastName = new JPanel();
+		lastName.setBackground(Color.pink);
 		lastName.setLayout(new GridBagLayout());
 		lastName.add(lastNameLabel, gbc);
 		gbc.gridy = 1;
@@ -158,6 +155,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel email = new JPanel();
+		email.setBackground(Color.pink);
 		email.setLayout(new GridBagLayout());
 		gbc.gridy = 0;
 		email.add(emailLabel, gbc);
@@ -170,6 +168,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel password = new JPanel();
+		password.setBackground(Color.pink);
 		password.setLayout(new GridBagLayout());
 		gbc.gridy = 0;
 		password.add(passwordLabel, gbc);
@@ -301,6 +300,7 @@ public class DataScraper extends JFrame {
 		JPasswordField passwordField = new JPasswordField(15);
 		
 		JPanel email = new JPanel();
+		email.setBackground(Color.pink);
 		email.setLayout(new GridBagLayout());
 		email.add(emailLabel, gbc);
 		gbc.gridy = 1;
@@ -312,6 +312,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel password = new JPanel();
+		password.setBackground(Color.pink);
 		password.setLayout(new GridBagLayout());
 		password.add(passwordLabel, gbc);
 		gbc.gridy = 1;
@@ -369,6 +370,7 @@ public class DataScraper extends JFrame {
 	
 	private void userHomePage(User user) {
 		JPanel postSignUpPanel = new JPanel();
+		postSignUpPanel.setBackground(Color.pink);
 		postSignUpPanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
