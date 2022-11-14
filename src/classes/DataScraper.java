@@ -1,6 +1,9 @@
 package classes;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,6 +15,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,12 +42,33 @@ public class DataScraper extends JFrame {
 	
 	private void openingPage() {
 		JPanel signUpButtonPanel = new JPanel();
+		signUpButtonPanel.setSize(800, 800);
 		
-		signUpButtonPanel.setLayout(new GridLayout(0, 1));
-		signUpButtonPanel.setSize(this.getWidth(), this.getHeight());
+		signUpButtonPanel.setLayout(new BoxLayout(signUpButtonPanel, BoxLayout.Y_AXIS));
+		signUpButtonPanel.setBorder(BorderFactory.createEmptyBorder(200, 200, 200, 200));
+		signUpButtonPanel.setComponentOrientation(getComponentOrientation());
+		signUpButtonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		this.getContentPane().setBackground(Color.pink);
+		signUpButtonPanel.setBackground(Color.pink);
+		
+		//signUpButtonPanel.setLayout(new GridLayout(0, 1));
+		//signUpButtonPanel.setSize(this.getWidth(), this.getHeight());
 
+		
+		JLabel welcomeTitle = new JLabel("DataScraper", JLabel.CENTER);
+		welcomeTitle.setFont(new Font("Comic Sans", Font.BOLD, 50));
+		welcomeTitle.setAlignmentX(CENTER_ALIGNMENT);
+		signUpButtonPanel.add(welcomeTitle);
+		
+		signUpButtonPanel.add(Box.createVerticalStrut(30));
+
+		
+	
+		
 		JButton loginButton = new JButton();
 		loginButton.setText("Login");
+		loginButton.setAlignmentX(CENTER_ALIGNMENT);
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -54,13 +80,14 @@ public class DataScraper extends JFrame {
 		loginButton.setVisible(true);
 		signUpButtonPanel.add(loginButton);
 
-		JPanel margin = new JPanel();
-		margin.setSize(this.getWidth(), 50);
-		signUpButtonPanel.add(margin);
+
+		signUpButtonPanel.add(Box.createVerticalStrut(30));
+		
 
 		JButton signUpButton = new JButton();
 		signUpButton.setText("Sign up");
-		signUpButton.setBackground(Color.pink);
+		//signUpButton.setPreferredSize(new Dimension(200, 100));
+		signUpButton.setAlignmentX(CENTER_ALIGNMENT);
 		signUpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -72,8 +99,6 @@ public class DataScraper extends JFrame {
 		signUpButton.setVisible(true);
 		signUpButtonPanel.add(signUpButton);
 
-		this.setLayout(new GridBagLayout());
-
 		this.add(signUpButtonPanel);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
@@ -82,6 +107,7 @@ public class DataScraper extends JFrame {
 	
 	private void signUpPage() {
 		JPanel signUpPagePanel = new JPanel();
+		signUpPagePanel.setBackground(Color.pink);
 		signUpPagePanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -106,6 +132,7 @@ public class DataScraper extends JFrame {
 		JTextField passwordField = new JPasswordField(15);
 		
 		JPanel firstName = new JPanel();
+		firstName.setBackground(Color.pink);
 		firstName.setLayout(new GridBagLayout());
 		firstName.add(firstNameLabel, gbc);
 		gbc.gridy = 1;
@@ -117,6 +144,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel lastName = new JPanel();
+		lastName.setBackground(Color.pink);
 		lastName.setLayout(new GridBagLayout());
 		lastName.add(lastNameLabel, gbc);
 		gbc.gridy = 1;
@@ -127,6 +155,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel email = new JPanel();
+		email.setBackground(Color.pink);
 		email.setLayout(new GridBagLayout());
 		gbc.gridy = 0;
 		email.add(emailLabel, gbc);
@@ -139,6 +168,7 @@ public class DataScraper extends JFrame {
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel password = new JPanel();
+		password.setBackground(Color.pink);
 		password.setLayout(new GridBagLayout());
 		gbc.gridy = 0;
 		password.add(passwordLabel, gbc);
@@ -245,12 +275,13 @@ public class DataScraper extends JFrame {
 	}
 	
 	private void postSignUpPage(User user) {
-		getUsers().put(user.getUsername(), user);
+		getUsers().put(user.getEmail(), user);
 		userHomePage(user);
 	}
 	
 	private void loginPage() {
 		JPanel loginPagePanel = new JPanel();
+		loginPagePanel.setBackground(Color.pink);
 		loginPagePanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -259,27 +290,29 @@ public class DataScraper extends JFrame {
 		gbc.insets = new Insets(0, 0, 5, 0);
 		loginPagePanel.setSize(this.getWidth(), this.getHeight());
 		
-		JLabel usernameLabel = new JLabel();
-		usernameLabel.setText("Username");
+		JLabel emailLabel = new JLabel();
+		emailLabel.setText("Email");
 		
 		JLabel passwordLabel = new JLabel();
 		passwordLabel.setText("Password");
 		
-		JTextField usernameField = new JTextField(15);
+		JTextField emailField = new JTextField(15);
 		JPasswordField passwordField = new JPasswordField(15);
 		
-		JPanel username = new JPanel();
-		username.setLayout(new GridBagLayout());
-		username.add(usernameLabel, gbc);
+		JPanel email = new JPanel();
+		email.setBackground(Color.pink);
+		email.setLayout(new GridBagLayout());
+		email.add(emailLabel, gbc);
 		gbc.gridy = 1;
-		username.add(usernameField, gbc);
+		email.add(emailField, gbc);
 		
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.CENTER;
-		loginPagePanel.add(username, gbc);
+		loginPagePanel.add(email, gbc);
 		gbc.anchor = GridBagConstraints.WEST;
 		
 		JPanel password = new JPanel();
+		password.setBackground(Color.pink);
 		password.setLayout(new GridBagLayout());
 		password.add(passwordLabel, gbc);
 		gbc.gridy = 1;
@@ -296,7 +329,7 @@ public class DataScraper extends JFrame {
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String loginFailedMsg = loginUser(usernameField.getText(), passwordField.getPassword());
+				String loginFailedMsg = loginUser(emailField.getText(), passwordField.getPassword());
 				if (!loginFailedMsg.isEmpty()) {
 					loginFailed.setText(loginFailedMsg);
 					loginFailed.setSize(loginPagePanel.getWidth(), 50);
@@ -304,7 +337,7 @@ public class DataScraper extends JFrame {
 				} else {
 					loginPagePanel.setVisible(false);
 					loginPagePanel.removeAll();
-					userHomePage(users.get(usernameField.getText()));
+					userHomePage(users.get(emailField.getText()));
 				}
 			}
 		});
@@ -322,8 +355,8 @@ public class DataScraper extends JFrame {
 		this.add(loginPagePanel);
 	}
 	
-	private String loginUser(String username, char[] password) {
-		User user = users.get(username);
+	private String loginUser(String email, char[] password) {
+		User user = users.get(email);
 		StringBuilder s = new StringBuilder();
 		s.append(password);
 		if (user == null) {
@@ -337,36 +370,53 @@ public class DataScraper extends JFrame {
 	
 	private void userHomePage(User user) {
 		JPanel postSignUpPanel = new JPanel();
+		postSignUpPanel.setBackground(Color.pink);
 		postSignUpPanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.WEST;
 
-		JLabel usernameLabel = new JLabel();
-		usernameLabel.setText(user.getUsername());
 		
-		JLabel firstNameLabel = new JLabel();
-		firstNameLabel.setText(user.getFirstName());
-		
-		JLabel lastNameLabel = new JLabel();
-		lastNameLabel.setText(user.getLastName());
-		
-		JLabel emailLabel = new JLabel();
-		emailLabel.setText(user.getEmail());
-		
-		JLabel passwordLabel = new JLabel();
-		passwordLabel.setText(user.getPassword());
-
-		postSignUpPanel.add(usernameLabel, gbc);
+		JLabel welcomeUser = new JLabel("Welcome, " + user.getFirstName() + "!");
+		welcomeUser.setFont(new Font("Comic Sans", Font.BOLD, 30));
 		gbc.gridy = 1;
-		postSignUpPanel.add(firstNameLabel, gbc);
+		postSignUpPanel.add(welcomeUser, gbc);
+		
+		JLabel tagsLabel = new JLabel("Enter hashtags");
 		gbc.gridy = 2;
-		postSignUpPanel.add(lastNameLabel, gbc);
+		postSignUpPanel.add(tagsLabel, gbc);
+		
+		JTextField tagsField = new JTextField(15);
 		gbc.gridy = 3;
-		postSignUpPanel.add(emailLabel, gbc);
+		postSignUpPanel.add(tagsField, gbc);
+		
+		JLabel keyWordLabel = new JLabel("Enter Keywords");
 		gbc.gridy = 4;
-		postSignUpPanel.add(passwordLabel, gbc);
+		postSignUpPanel.add(keyWordLabel, gbc);
+		
+		JTextField keyWordField = new JTextField(15);
+		gbc.gridy = 5;
+		postSignUpPanel.add(keyWordField, gbc);
+		
+		JButton parse = new JButton();
+		parse.setSize(100, 50);
+		parse.setText("Parse data");
+		parse.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				postSignUpPanel.setVisible(false);
+				System.out.println("Data parsed!");
+				//openingPage();
+			}
+		});
+		parse.setVisible(true);
+		gbc.gridy = 6;
+		gbc.anchor = GridBagConstraints.CENTER;
+		gbc.insets = new Insets(10, 0, 0, 0);
+		postSignUpPanel.add(parse, gbc);
+
+		
 
 		JButton logout = new JButton();
 		logout.setSize(100, 50);
@@ -379,9 +429,9 @@ public class DataScraper extends JFrame {
 			}
 		});
 		logout.setVisible(true);
-		gbc.gridy = 5;
+		gbc.gridy = 7;
 		gbc.anchor = GridBagConstraints.CENTER;
-		gbc.insets = new Insets(5, 0, 0, 0);
+		gbc.insets = new Insets(20, 0, 0, 0);
 		postSignUpPanel.add(logout, gbc);
 
 		this.add(postSignUpPanel);
