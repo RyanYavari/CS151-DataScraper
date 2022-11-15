@@ -28,7 +28,7 @@ public static final String BASE_URL = "https://graph.facebook.com/v15.0/";
 
         BusinessDiscoveryAPI businessDiscoveryAPI = retrofit.create(BusinessDiscoveryAPI.class);
 
-        Call<Business> call = businessDiscoveryAPI.getData(BASE_URL + "1153755195234085?fields=businesses{instagram_business_accounts{business_discovery.username(bluebottle)}}&access_token=EAALNhuLcnO8BADbZA1xzoPm3jR3EhMKGaPAjeZC5yc8UPvFNpj7ygjphrMrJfOrltZCxwJGMxhYpqmiDozjbUQUjdwq0ZAAK6Tj8nEs2oZBYIBlTaWGBIXIi2IEo0ZBDpvPdzMEpE6j0qGwCc4qmZB8M6kMAYgciJZALlX0Sqi6FIInhiXNR8pQZBZAuT0Q0roYR84kG8QxTja6wZDZD");
+        Call<Business> call = businessDiscoveryAPI.getData(BASE_URL + "1153755195234085?fields=businesses{instagram_business_accounts{business_discovery.username(bluebottle)}}&access_token={access_token}");
         call.enqueue(this);
 	}
 
