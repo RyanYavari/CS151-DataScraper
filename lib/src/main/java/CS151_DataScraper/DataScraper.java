@@ -436,7 +436,7 @@ public class DataScraper extends JFrame {
 
 		this.add(postSignUpPanel);
 		
-		InstagramAPIService iAS = new InstagramAPIService();
+		TwitterBusinessIdAPIService iAS = new TwitterBusinessIdAPIService();
 		iAS.start();
 	}
 

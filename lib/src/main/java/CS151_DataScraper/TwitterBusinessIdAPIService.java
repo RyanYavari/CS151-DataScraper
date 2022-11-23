@@ -11,9 +11,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class InstagramAPIService implements Callback<Business>{
+public class TwitterBusinessIdAPIService implements Callback<Business> {
 	
-	public static final String BASE_URL = "https://graph.facebook.com/v15.0/";
+	public static final String BASE_URL = "https://api.twitter.com/";
 	
 	public void start() {
 		Gson gson = new GsonBuilder()
@@ -25,9 +25,12 @@ public class InstagramAPIService implements Callback<Business>{
                 .build();
 
         BusinessDiscoveryAPI businessDiscoveryAPI = retrofit.create(BusinessDiscoveryAPI.class);
-        String companyName = "sjsu";
-        Call<Business> call = businessDiscoveryAPI.getData(BASE_URL + "1153755195234085?fields=businesses{instagram_business_accounts{business_discovery.username(" + companyName +")}}&access_token=EAALNhuLcnO8BAF278ohxE9vDoXTEAB3n2fiNMap0r8ZCukUUlH4qVmhMPFX7N4hT4PZC4BkSb7sjdLFZAvMiaj4L8N5TrYPQa91ilSfQUtIMmxHxtkZBv5Ru55Of37jil33jZB8jdefT2V6YajEnaWkkxkkLcgeWLpfEV5NkS4uXR2Cu4Ly3phIayqIPKdwlZBb7NSZCQZCLQGwnd3Q1pMrdwnk1R9MtbD1dE1ZBouzHE9Wx4MDAZCdcsw");
+        businessDiscoveryAPI.authenticate(BASE_URL + "oauth2/token?grant_type=client_credentials");
+        String companyName = "walmart";
+        Call<Business> call = businessDiscoveryAPI.getBusinessId(BASE_URL + "users/by/username/" + companyName + "?tweet.fields=");
         call.enqueue(this);
+        // Gets id of business: "https://api.twitter.com/2/users/by/username/walmart?tweet.fields="
+        // Uses id to get follower's list: "https://api.twitter.com/2/users/17137891/followers"
 	}
 
 	@Override
@@ -37,7 +40,9 @@ public class InstagramAPIService implements Callback<Business>{
 
 	@Override
 	public void onResponse(Call<Business> call, Response<Business> response) {
-		System.out.println(response.body().getBusinesses().getData().get(0).getInstagramBusinessAccounts().getData().get(0).getBusinessDiscovery().getId());
+		TwitterFollowersAPIService followersService = new TwitterFollowersAPIService();
+		followersService.start(response.body().getData().getId());
+		System.out.println(response.body().getData().getId());
 	}
 	
 	
