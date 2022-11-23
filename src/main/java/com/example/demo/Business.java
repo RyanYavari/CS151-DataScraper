@@ -1,58 +1,32 @@
 package com.example.demo;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Business {
-
-	@SerializedName("data")
-	@Expose
-	private Data data;
-
-	public Data getData() {
-		return data;
+	
+	private List<String> hashtags = new ArrayList<>();
+	private List<String> keywords = new ArrayList<>();
+	
+	public Business(List<String> hashtags, List<String> keywords) {
+		this.setHashtags(hashtags);
+		this.setKeywords(keywords);
 	}
 
-	public void setData(Data data) {
-		this.data = data;
+	public List<String> getHashtags() {
+		return hashtags;
 	}
 
-}
-
-class Data {
-
-	@SerializedName("id")
-	@Expose
-	private String id;
-	@SerializedName("name")
-	@Expose
-	private String name;
-	@SerializedName("username")
-	@Expose
-	private String username;
-
-	public String getId() {
-		return id;
+	public void setHashtags(List<String> hashtags) {
+		this.hashtags = hashtags;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public List<String> getKeywords() {
+		return keywords;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setKeywords(List<String> keywords) {
+		this.keywords = keywords;
 	}
 
 }

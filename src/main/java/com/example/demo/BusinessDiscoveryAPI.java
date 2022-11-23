@@ -19,6 +19,6 @@ public interface BusinessDiscoveryAPI {
 	public Call<Followers> getFollowersData(@Url String url);
 
 	@GET
-	public Call<Business> getBusinessId(@Url String url);
+	public Call<TwitterBusiness> getBusinessId(@Url String url);
 
 }

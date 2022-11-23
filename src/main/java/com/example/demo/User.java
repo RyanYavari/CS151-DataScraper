@@ -10,7 +10,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password; 
-	private HashMap<String, List<String>> handles;
+	private HashMap<Business, List<String>> handles;
 	
 	public User(String firstName, String lastName, String email, String password) {
 		this.setFirstName(firstName);
@@ -52,11 +52,11 @@ public class User {
 		this.password = password;
 	}
 
-	public HashMap<String, List<String>> getHandles() {
+	public HashMap<Business, List<String>> getHandles() {
 		return handles;
 	}
 
-	public void setHandles(HashMap<String, List<String>> handles) {
+	public void setHandles(HashMap<Business, List<String>> handles) {
 		this.handles = handles;
 	}
 	
