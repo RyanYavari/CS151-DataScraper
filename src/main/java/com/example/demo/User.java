@@ -1,4 +1,7 @@
 package com.example.demo;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.swing.JPasswordField;
 
 public class User {
@@ -6,15 +9,15 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String password; // ehe
-	private String username;
+	private String password; 
+	private HashMap<String, List<String>> handles;
 	
-	public User(String firstName, String lastName, String email, String password, String username) {
+	public User(String firstName, String lastName, String email, String password) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setEmail(email);
 		this.setPassword(password);
-		this.setUsername(username);
+		setHandles(new HashMap<>());
 	}
 
 	public String getFirstName() {
@@ -49,14 +52,13 @@ public class User {
 		this.password = password;
 	}
 
-	public String getUsername() {
-		return username;
+	public HashMap<String, List<String>> getHandles() {
+		return handles;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setHandles(HashMap<String, List<String>> handles) {
+		this.handles = handles;
 	}
-	
 	
 
 }
