@@ -5,7 +5,7 @@ import { Button, Hidden } from "@mui/material";
 import { ClassNames } from "@emotion/react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
+import ListItem from "@mui/material/ListItem"; 
 
 export default function Login() {
   const email = useRef(null);
@@ -24,12 +24,16 @@ export default function Login() {
       .then((result) => console.log(result));
   }
 
+  function setSignUpComponent() {
+    
+  }
+
   return (
     <Box
       component="form"
       sx={{ 
         width: "100%",  
-        bgcolor: "background.paper",
+        height: "100%",
         mx: "auto", 
         display: 'flex',
         justifyContent: 'center'
@@ -42,7 +46,7 @@ export default function Login() {
           sx={{
             mx: "auto",
             width: 500,
-            mt: 25,
+            mt: 20,
             mb: 20,
             bgcolor: (theme) =>
               theme.palette.mode === "dark" ? "#101010" : "grey.50",
@@ -119,9 +123,41 @@ export default function Login() {
                 bgcolor: (theme) =>
                   theme.palette.mode === "light" ? "#FFFFFF" : "white",
                 mx: "auto",
+                width: 105,
               }}
             >
               Login
+            </Button>
+          </ListItem>
+          <ListItem
+            sx={{
+              mx: "auto",
+              width: 300,
+              justifyContent: "center",
+              textAlign: "center",
+              fontSize: "0.875rem",
+              fontWeight: "200"
+            }}
+            >
+              <label>OR</label>
+          </ListItem>
+          <ListItem
+            sx={{
+              mx: "auto",
+              width: 300,
+            }}
+          >
+            <Button
+              variant="outlined"
+              onClick={setSignUpComponent}
+              sx={{
+                bgcolor: (theme) =>
+                  theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                mx: "auto",
+                width: 105,
+              }}
+            >
+              Signup
             </Button>
           </ListItem>
         </List>
