@@ -41,7 +41,7 @@ public class Cs151DataScraperApplication {
 			// create new user in database
 			return "New user created!";
 		} catch (PasswordException pE) {
-			return pE.toString();
+			return pE.printIssue();
 		}
 	}
 

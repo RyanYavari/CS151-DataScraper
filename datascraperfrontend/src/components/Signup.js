@@ -41,7 +41,7 @@ export default function Signup() {
         if (text === "New user created!") {
           navigate('/home');
         } else {
-          showError(true);
+          showError(authError => true);
           setMessage(text);
         }
       });
@@ -52,7 +52,7 @@ export default function Signup() {
         component="form"
         sx={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
           mx: "auto",
           display: "flex",
           justifyContent: "center",
@@ -69,9 +69,9 @@ export default function Signup() {
             sx={{
               mx: "auto",
               width: 400,
-              mt: 13,
-              mb: 20,
-              height: "63%",
+              mt: 15,
+              mb: 10,
+              height: "65%",
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -89,7 +89,7 @@ export default function Signup() {
               sx={{
                 mx: "auto",
                 width: 300,
-                mt: 1,
+                mt: 1.5,
                 justifyContent: "center",
                 textAlign: "center",
                 fontSize: "1.875rem",
@@ -171,6 +171,7 @@ export default function Signup() {
                 autoComplete="current-password"
                 inputRef={password}
                 required
+                error={authError}
                 helperText={errorMessage}
               />
             </ListItem>

@@ -82,7 +82,7 @@ export default function Login() {
                 sx={{
                   mx: "auto",
                   width: 300,
-                  mt: {authError} ? 2.5 : 3.5,
+                  mt: 2.75,
                   justifyContent: "center",
                   textAlign: "center",
                   fontSize: "1.875rem",

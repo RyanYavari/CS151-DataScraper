@@ -13,7 +13,7 @@ class UpperCaseCharacterMissing extends PasswordException {
 	}
 	
 	public String printIssue() {
-		return "User needs at least one upper case character in password";
+		return "Password requires at least one upper case character";
 	}
 	
 }
@@ -25,7 +25,7 @@ class SpecialCharacterMissing extends PasswordException {
 	}
 	
 	public String printIssue() {
-		return "User needs at least one special character in password";
+		return "Password requires at least one special character";
 	}
 
 }
@@ -37,7 +37,7 @@ class NumberCharacterMissing extends PasswordException {
 	}
 	
 	public String printIssue() {
-		return "User needs at least one number character in password";
+		return "Password requires at least one number character";
 	}
 
 }
@@ -49,7 +49,7 @@ class Minimum8CharactersRequired extends PasswordException {
 	}
 	
 	public String printIssue() {
-		return "User needs at least 8 characters in password";
+		return "Password requires at least 8 characters";
 	}
 
 }
@@ -61,7 +61,7 @@ class LowerCaseCharacterMissing extends PasswordException {
 	}
 	
 	public String printIssue() {
-		return "User needs at least one lower case character in password";
+		return "Password requires at least one lower case character";
 	}
 
 }
