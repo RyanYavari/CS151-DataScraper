@@ -38,6 +38,7 @@ public class Cs151DataScraperApplication {
 		try {
 			char[] passwordCharArray = password.toCharArray();
 			verifyPassword(passwordCharArray);
+			User user = new User(firstName, lastName, email, password);
 			// create new user in database
 			return "New user created!";
 		} catch (PasswordException pE) {
