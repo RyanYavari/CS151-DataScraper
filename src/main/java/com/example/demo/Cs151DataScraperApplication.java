@@ -16,9 +16,15 @@ public class Cs151DataScraperApplication {
 	}
 
 	@CrossOrigin
-	@GetMapping("/hello")
-	public String hello(@RequestParam (value = "name", defaultValue = "springboot") String name) {
-		return name;
+	@GetMapping("/authenticate")
+	public String authenticate(@RequestParam (name = "email", defaultValue = "") String email,
+		@RequestParam (name = "password", defaultValue = "") String password) {
+		// currently this is just some dummy code
+		// should be replaced by accessing database and checking there
+		if (email.equals("dfs") && password.equals("dfs")) {
+			return "Authentication successful!";
+		}
+		return "Authentication not successful :(";
 	}
 
 }
