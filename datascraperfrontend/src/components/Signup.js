@@ -79,7 +79,6 @@ export default function Signup() {
                   }}
                   id="firstNameInput"
                   label="First Name"
-                  autoComplete="current-first-name"
                   inputRef={firstName}
                 />
               </ListItem>
@@ -97,7 +96,6 @@ export default function Signup() {
                   }}
                   id="lastNameInput"
                   label="Last Name"
-                  autoComplete="current-last-name"
                   inputRef={lastName}
                 />
               </ListItem>
