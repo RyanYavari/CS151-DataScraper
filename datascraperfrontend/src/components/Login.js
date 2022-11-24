@@ -105,6 +105,7 @@ export default function Login() {
                   label="Email"
                   autoComplete="current-email"
                   inputRef={email}
+                  required
                 />
               </ListItem>
               <ListItem
@@ -125,6 +126,7 @@ export default function Login() {
                   autoComplete="current-password"
                   inputRef={password}
                   error={authError}
+                  required
                 />
               </ListItem>
               <ListItem
