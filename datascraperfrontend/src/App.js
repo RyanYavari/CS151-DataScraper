@@ -3,16 +3,14 @@ import "./App.css";
 import { useEffect } from "react";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import { ReactDOM } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
 
-const sectionStyle = {
-  height: "100vh",
-
-  backgroundImage:
-    "url('./media/background.png') ",
-
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover"
-};
 
 function App() {
 
@@ -22,7 +20,12 @@ function App() {
   // }, []);
 
   return (
-    <Signup/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login/>}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
