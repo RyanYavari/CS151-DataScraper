@@ -2,10 +2,10 @@ import * as React from "react";
 import { useRef } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Hidden } from "@mui/material";
-import { ClassNames } from "@emotion/react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem"; 
+import background from "./media/background.jpg"
 
 export default function Login() {
   const email = useRef(null);
@@ -26,14 +26,19 @@ export default function Login() {
 
 
   return (
+    <div>
     <Box
       component="form"
       sx={{ 
         width: "100%",  
-        height: "100%",
+        height: "100vh",
         mx: "auto", 
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundImage: `url(${background})`,
+        backgroundRepeat: "no-repeat",
+        backgroundHeight: "100vh",
+        backgroundSize: "cover"
       }}
       noValidate
       autoComplete="off"
@@ -144,5 +149,6 @@ export default function Login() {
         </List>
       </div>
     </Box>
+    </div>
   );
 }

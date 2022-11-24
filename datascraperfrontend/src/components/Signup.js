@@ -2,10 +2,10 @@ import * as React from "react";
 import { useRef } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Hidden } from "@mui/material";
-import { ClassNames } from "@emotion/react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import background from "./media/background.jpg"
 
 export default function Signup() {
   const firstName = useRef(null);
@@ -39,6 +39,10 @@ export default function Signup() {
         mx: "auto",
         display: "flex",
         justifyContent: "center",
+        backgroundImage: `url(${background})`,
+        backgroundRepeat: "no-repeat",
+        backgroundHeight: "100vh",
+        backgroundSize: "cover"
       }}
       noValidate
       autoComplete="off"
@@ -50,7 +54,7 @@ export default function Signup() {
             width: 400,
             mt: 13,
             mb: 20,
-            height: "65%",
+            height: "63%",
             bgcolor: (theme) =>
               theme.palette.mode === "dark" ? "#101010" : "grey.50",
             color: (theme) =>
@@ -68,7 +72,7 @@ export default function Signup() {
             sx={{
               mx: "auto",
               width: 300,
-              mt: 1.5,
+              mt: 1,
               justifyContent: "center",
               textAlign: "center",
               fontSize: "1.875rem",
