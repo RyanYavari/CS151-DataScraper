@@ -1,58 +1,58 @@
-// package com.example.demo;
+package com.example.demo;
 
-// import com.google.gson.annotations.Expose;
-// import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-// public class TwitterBusiness {
+public class TwitterBusiness {
 
-// 	@SerializedName("data")
-// 	@Expose
-// 	private Data data;
+	@SerializedName("data")
+	@Expose
+	private Data data;
 
-// 	public Data getData() {
-// 		return data;
-// 	}
+	public Data getData() {
+		return data;
+	}
 
-// 	public void setData(Data data) {
-// 		this.data = data;
-// 	}
+	public void setData(Data data) {
+		this.data = data;
+	}
 
-// }
+}
 
-// class Data {
+class Data {
 
-// 	@SerializedName("id")
-// 	@Expose
-// 	private String id;
-// 	@SerializedName("name")
-// 	@Expose
-// 	private String name;
-// 	@SerializedName("username")
-// 	@Expose
-// 	private String username;
+	@SerializedName("id")
+	@Expose
+	private String id;
+	@SerializedName("name")
+	@Expose
+	private String name;
+	@SerializedName("username")
+	@Expose
+	private String username;
 
-// 	public String getId() {
-// 		return id;
-// 	}
+	public String getId() {
+		return id;
+	}
 
-// 	public void setId(String id) {
-// 		this.id = id;
-// 	}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-// 	public String getName() {
-// 		return name;
-// 	}
+	public String getName() {
+		return name;
+	}
 
-// 	public void setName(String name) {
-// 		this.name = name;
-// 	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-// 	public String getUsername() {
-// 		return username;
-// 	}
+	public String getUsername() {
+		return username;
+	}
 
-// 	public void setUsername(String username) {
-// 		this.username = username;
-// 	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-// }
+}

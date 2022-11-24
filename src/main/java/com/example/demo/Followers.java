@@ -1,98 +1,98 @@
-// package com.example.demo;
+package com.example.demo;
 
-// import java.util.List;
+import java.util.List;
 
-// import com.google.gson.annotations.Expose;
-// import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-// import java.util.List;
-// import com.google.gson.annotations.Expose;
-// import com.google.gson.annotations.SerializedName;
+import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-// public class Followers {
+public class Followers {
 
-// 	private List<Datum> data = null;
-// 	private Meta meta;
+	private List<Datum> data = null;
+	private Meta meta;
 
-// 	public List<Datum> getData() {
-// 		return data;
-// 	}
+	public List<Datum> getData() {
+		return data;
+	}
 
-// 	public void setData(List<Datum> data) {
-// 		this.data = data;
-// 	}
+	public void setData(List<Datum> data) {
+		this.data = data;
+	}
 
-// 	public Meta getMeta() {
-// 		return meta;
-// 	}
+	public Meta getMeta() {
+		return meta;
+	}
 
-// 	public void setMeta(Meta meta) {
-// 		this.meta = meta;
-// 	}
+	public void setMeta(Meta meta) {
+		this.meta = meta;
+	}
 
-// }
+}
 
-// class Datum {
+class Datum {
 
-// 	@SerializedName("id")
-// 	@Expose
-// 	private String id;
-// 	@SerializedName("name")
-// 	@Expose
-// 	private String name;
-// 	@SerializedName("username")
-// 	@Expose
-// 	private String username;
+	@SerializedName("id")
+	@Expose
+	private String id;
+	@SerializedName("name")
+	@Expose
+	private String name;
+	@SerializedName("username")
+	@Expose
+	private String username;
 
-// 	public String getId() {
-// 		return id;
-// 	}
+	public String getId() {
+		return id;
+	}
 
-// 	public void setId(String id) {
-// 		this.id = id;
-// 	}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-// 	public String getName() {
-// 		return name;
-// 	}
+	public String getName() {
+		return name;
+	}
 
-// 	public void setName(String name) {
-// 		this.name = name;
-// 	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-// 	public String getUsername() {
-// 		return username;
-// 	}
+	public String getUsername() {
+		return username;
+	}
 
-// 	public void setUsername(String username) {
-// 		this.username = username;
-// 	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-// }
+}
 
-// class Meta {
+class Meta {
 
-// 	@SerializedName("result_count")
-// 	@Expose
-// 	private int resultCount;
-// 	@SerializedName("next_token")
-// 	@Expose
-// 	private String nextToken;
+	@SerializedName("result_count")
+	@Expose
+	private int resultCount;
+	@SerializedName("next_token")
+	@Expose
+	private String nextToken;
 
-// 	public int getResultCount() {
-// 		return resultCount;
-// 	}
+	public int getResultCount() {
+		return resultCount;
+	}
 
-// 	public void setResultCount(int resultCount) {
-// 		this.resultCount = resultCount;
-// 	}
+	public void setResultCount(int resultCount) {
+		this.resultCount = resultCount;
+	}
 
-// 	public String getNextToken() {
-// 		return nextToken;
-// 	}
+	public String getNextToken() {
+		return nextToken;
+	}
 
-// 	public void setNextToken(String nextToken) {
-// 		this.nextToken = nextToken;
-// 	}
+	public void setNextToken(String nextToken) {
+		this.nextToken = nextToken;
+	}
 
-// }
+}
