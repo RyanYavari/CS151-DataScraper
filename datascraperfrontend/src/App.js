@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useEffect } from "react";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
   // }, []);
 
   return (
-    <Login/>
+    <Signup/>
   );
 }
 
