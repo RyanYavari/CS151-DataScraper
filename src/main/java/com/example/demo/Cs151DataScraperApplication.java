@@ -24,7 +24,7 @@ public class Cs151DataScraperApplication {
 		if (email.equals("dfs") && password.equals("dfs")) {
 			return "Authentication successful!";
 		}
-		return "Authentication not successful :(";
+		return "User does not exist or password is incorrect";
 	}
 
 	@CrossOrigin

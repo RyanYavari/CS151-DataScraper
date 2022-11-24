@@ -3,15 +3,18 @@ import { useRef } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Hidden } from "@mui/material";
 import Box from "@mui/material/Box";
-import List from "@mui/material/List";
+import List, { listClasses } from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import background from "./media/background.jpg";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import Signup from "./Signup";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 
 export default function Login() {
   const email = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
+  const [authError, showError] = useState(false);
 
   function authenticateUser() {
     console.log(email.current.value);
@@ -22,8 +25,15 @@ export default function Login() {
         "&password=" +
         password.current.value
     )
-      .then((response) => response.text)
-      .then((result) => console.log(result));
+    .then((response) => response.text())
+      .then((text) => {
+        console.log(text);
+        if (text === "Authentication successful!") {
+          navigate('/home');
+        } else {
+          showError(true);
+        }
+      });
   }
 
   return (
@@ -46,6 +56,7 @@ export default function Login() {
         >
           <div>
             <List
+              id="list"
               sx={{
                 mx: "auto",
                 width: 400,
@@ -113,6 +124,7 @@ export default function Login() {
                   type="password"
                   autoComplete="current-password"
                   inputRef={password}
+                  error={authError}
                 />
               </ListItem>
               <ListItem
@@ -146,7 +158,7 @@ export default function Login() {
               >
                 <label>
                   Don't have an account?{" "}
-                  <Link to="/signup" component={Signup}>
+                  <Link to="/signup">
                     Sign up
                   </Link>
                   !

@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import background from "./media/background.jpg";
-import Login from "./Login";
 
 export default function Signup() {
   const firstName = useRef(null);
@@ -101,6 +100,7 @@ export default function Signup() {
                 id="firstNameInput"
                 label="First Name"
                 inputRef={firstName}
+                required
               />
             </ListItem>
             <ListItem
@@ -118,6 +118,7 @@ export default function Signup() {
                 id="lastNameInput"
                 label="Last Name"
                 inputRef={lastName}
+                required
               />
             </ListItem>
             <ListItem
@@ -136,6 +137,7 @@ export default function Signup() {
                 label="Email"
                 autoComplete="current-email"
                 inputRef={email}
+                required
               />
             </ListItem>
             <ListItem
@@ -155,6 +157,7 @@ export default function Signup() {
                 type="password"
                 autoComplete="current-password"
                 inputRef={password}
+                required
               />
             </ListItem>
             <ListItem
@@ -187,7 +190,7 @@ export default function Signup() {
               }}
             >
               <label>
-                Have an account? <Link to="/" component={Login}>Log in</Link>!
+                Have an account? <Link to="/">Log in</Link>!
               </label>
             </ListItem>
           </List>
