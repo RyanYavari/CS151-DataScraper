@@ -24,9 +24,6 @@ export default function Login() {
       .then((result) => console.log(result));
   }
 
-  function setSignUpComponent() {
-    
-  }
 
   return (
     <Box
@@ -45,9 +42,10 @@ export default function Login() {
         <List
           sx={{
             mx: "auto",
-            width: 500,
+            width: 400,
             mt: 20,
             mb: 20,
+            height: 350,
             bgcolor: (theme) =>
               theme.palette.mode === "dark" ? "#101010" : "grey.50",
             color: (theme) =>
@@ -65,6 +63,7 @@ export default function Login() {
             sx={{
               mx: "auto",
               width: 300,
+              mt: 3.5,
               justifyContent: "center",
               textAlign: "center",
               fontSize: "1.875rem",
@@ -136,30 +135,12 @@ export default function Login() {
               justifyContent: "center",
               textAlign: "center",
               fontSize: "0.875rem",
-              fontWeight: "200"
+              fontWeight: "350"
             }}
             >
-              <label>OR</label>
+              <label>Don't have an account? Sign up!</label>
           </ListItem>
-          <ListItem
-            sx={{
-              mx: "auto",
-              width: 300,
-            }}
-          >
-            <Button
-              variant="outlined"
-              onClick={setSignUpComponent}
-              sx={{
-                bgcolor: (theme) =>
-                  theme.palette.mode === "light" ? "#FFFFFF" : "white",
-                mx: "auto",
-                width: 105,
-              }}
-            >
-              Signup
-            </Button>
-          </ListItem>
+          
         </List>
       </div>
     </Box>
