@@ -8,12 +8,17 @@ import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import background from "./media/background.jpg";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   const firstName = useRef(null);
   const lastName = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const navigate = useNavigate();
+  const [authError, showError] = useState(false);
+  const[errorMessage, setMessage] = useState("");
 
   function createNewUser() {
     console.log(firstName.current.value);
@@ -30,8 +35,16 @@ export default function Signup() {
         "&password=" +
         password.current.value
     )
-      .then((response) => response.text)
-      .then((result) => console.log(result));
+      .then((response) => response.text())
+      .then((text) => {
+        console.log(text);
+        if (text === "New user created!") {
+          navigate('/home');
+        } else {
+          showError(true);
+          setMessage(text);
+        }
+      });
   }
 
   return (
@@ -94,7 +107,7 @@ export default function Signup() {
               <TextField
                 sx={{
                   bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                  theme.palette.mode === "#101010",
                   width: 300,
                 }}
                 id="firstNameInput"
@@ -112,7 +125,7 @@ export default function Signup() {
               <TextField
                 sx={{
                   bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                  theme.palette.mode === "#101010",
                   width: 300,
                 }}
                 id="lastNameInput"
@@ -130,7 +143,7 @@ export default function Signup() {
               <TextField
                 sx={{
                   bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                  theme.palette.mode === "#101010",
                   width: 300,
                 }}
                 id="emailInput"
@@ -149,7 +162,7 @@ export default function Signup() {
               <TextField
                 sx={{
                   bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                  theme.palette.mode === "#101010",
                   width: 300,
                 }}
                 id="passwordInput"
@@ -158,6 +171,7 @@ export default function Signup() {
                 autoComplete="current-password"
                 inputRef={password}
                 required
+                helperText={errorMessage}
               />
             </ListItem>
             <ListItem
@@ -171,7 +185,7 @@ export default function Signup() {
                 onClick={createNewUser}
                 sx={{
                   bgcolor: (theme) =>
-                    theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                  theme.palette.mode === "#101010",
                   mx: "auto",
                   width: 105,
                 }}

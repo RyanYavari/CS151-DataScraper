@@ -15,6 +15,7 @@ export default function Login() {
   const password = useRef(null);
   const navigate = useNavigate();
   const [authError, showError] = useState(false);
+  const[errorMessage, setMessage] = useState("");
 
   function authenticateUser() {
     console.log(email.current.value);
@@ -32,6 +33,7 @@ export default function Login() {
           navigate('/home');
         } else {
           showError(true);
+          setMessage(text);
         }
       });
   }
@@ -80,7 +82,7 @@ export default function Login() {
                 sx={{
                   mx: "auto",
                   width: 300,
-                  mt: 3.5,
+                  mt: {authError} ? 2.5 : 3.5,
                   justifyContent: "center",
                   textAlign: "center",
                   fontSize: "1.875rem",
@@ -98,7 +100,7 @@ export default function Login() {
                 <TextField
                   sx={{
                     bgcolor: (theme) =>
-                      theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                      theme.palette.mode === "#101010",
                     width: 300,
                   }}
                   id="emailInput"
@@ -106,6 +108,7 @@ export default function Login() {
                   autoComplete="current-email"
                   inputRef={email}
                   required
+                  error={authError}
                 />
               </ListItem>
               <ListItem
@@ -117,7 +120,7 @@ export default function Login() {
                 <TextField
                   sx={{
                     bgcolor: (theme) =>
-                      theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                    theme.palette.mode === "#101010",
                     width: 300,
                   }}
                   id="passwordInput"
@@ -127,6 +130,7 @@ export default function Login() {
                   inputRef={password}
                   error={authError}
                   required
+                  helperText={errorMessage}
                 />
               </ListItem>
               <ListItem
@@ -140,7 +144,7 @@ export default function Login() {
                   onClick={authenticateUser}
                   sx={{
                     bgcolor: (theme) =>
-                      theme.palette.mode === "light" ? "#FFFFFF" : "white",
+                    theme.palette.mode === "#101010",
                     mx: "auto",
                     width: 105,
                   }}

@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.regex.Pattern;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +26,7 @@ public class Cs151DataScraperApplication {
 		if (email.equals("dfs") && password.equals("dfs")) {
 			return "Authentication successful!";
 		}
-		return "User does not exist or password is incorrect";
+		return "Nonexistent user or incorrect password";
 	}
 
 	@CrossOrigin
@@ -33,52 +35,54 @@ public class Cs151DataScraperApplication {
 		@RequestParam (name = "lastName", defaultValue = "") String lastName,
 		@RequestParam (name = "email", defaultValue = "") String email,
 		@RequestParam (name = "password", defaultValue = "") String password) {
-		// currently this is just some dummy code
-		// should be replaced by accessing database and checking there
-		if (email.equals("dfs") && password.equals("dfs")) {
+		try {
+			char[] passwordCharArray = password.toCharArray();
+			verifyPassword(passwordCharArray);
+			// create new user in database
 			return "New user created!";
+		} catch (PasswordException pE) {
+			return pE.toString();
 		}
-		return "New user was not created :(";
 	}
 
-	// private void verifyPassword(char[] password) throws PasswordException {
-	// 	int upperCase = 0;
-	// 	int lowerCase = 0;
-	// 	Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
-	// 	int numChar = 0;
+	private void verifyPassword(char[] password) throws PasswordException {
+		int upperCase = 0;
+		int lowerCase = 0;
+		Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
+		int numChar = 0;
 		
-	// 	if (password.length < 8) {
-	// 		throw new Minimum8CharactersRequired();
-	// 	}
+		if (password.length < 8) {
+			throw new Minimum8CharactersRequired();
+		}
 		
-	// 	for (int i = 0; i < password.length; i++) {
-	// 		if (Character.isUpperCase(password[i])) {
-	// 			upperCase++;
-	// 		} else if (Character.isLowerCase(password[i])) {
-	// 			lowerCase++;
-	// 		} else if (Character.isDigit(password[i])) {
-	// 			numChar++;
-	// 		} 
-	// 	}
+		for (int i = 0; i < password.length; i++) {
+			if (Character.isUpperCase(password[i])) {
+				upperCase++;
+			} else if (Character.isLowerCase(password[i])) {
+				lowerCase++;
+			} else if (Character.isDigit(password[i])) {
+				numChar++;
+			} 
+		}
 		
-	// 	if (upperCase == 0) {
-	// 		throw new UpperCaseCharacterMissing();
-	// 	}
+		if (upperCase == 0) {
+			throw new UpperCaseCharacterMissing();
+		}
 		
-	// 	if (lowerCase == 0) {
-	// 		throw new LowerCaseCharacterMissing();
-	// 	}
+		if (lowerCase == 0) {
+			throw new LowerCaseCharacterMissing();
+		}
 		
-	// 	if (numChar == 0) {
-	// 		throw new NumberCharacterMissing();
-	// 	}
+		if (numChar == 0) {
+			throw new NumberCharacterMissing();
+		}
 		
-	// 	StringBuilder s = new StringBuilder();
-	// 	s.append(password);
-	// 	if (!regex.matcher(s).find()) {
-	// 		throw new SpecialCharacterMissing();
-	// 	}
+		StringBuilder s = new StringBuilder();
+		s.append(password);
+		if (!regex.matcher(s).find()) {
+			throw new SpecialCharacterMissing();
+		}
 	
-	// }
+	}
 
 }
