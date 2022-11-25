@@ -7,7 +7,7 @@ import List, { listClasses } from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import background from "./media/background.jpg";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
@@ -15,7 +15,7 @@ export default function Login() {
   const password = useRef(null);
   const navigate = useNavigate();
   const [authError, showError] = useState(false);
-  const[errorMessage, setMessage] = useState("");
+  const [errorMessage, setMessage] = useState("");
 
   function authenticateUser() {
     console.log(email.current.value);
@@ -26,11 +26,20 @@ export default function Login() {
         "&password=" +
         password.current.value
     )
-    .then((response) => response.text())
+      .then((response) => response.text())
       .then((text) => {
         console.log(text);
         if (text === "Authentication successful!") {
-          navigate('/home');
+          fetch("http://localhost:8080/getUser")
+            .then((response) => response.json())
+            .then((result) => {
+              navigate("/home", {state: {
+                firstName: result.firstName,
+                lastName: result.lastName,
+                email: result.email,
+                handles: result.handles 
+              }});
+            });
         } else {
           showError(true);
           setMessage(text);
@@ -39,140 +48,133 @@ export default function Login() {
   }
 
   return (
-      <div>
-        <Box
-          component="form"
-          sx={{
-            width: "100%",
-            height: "100vh",
-            mx: "auto",
-            display: "flex",
-            justifyContent: "center",
-            backgroundImage: `url(${background})`,
-            backgroundRepeat: "no-repeat",
-            backgroundHeight: "100vh",
-            backgroundSize: "cover",
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <div>
-            <List
-              id="list"
+    <div>
+      <Box
+        component="form"
+        sx={{
+          width: "100%",
+          height: "100vh",
+          mx: "auto",
+          display: "flex",
+          justifyContent: "center",
+          backgroundImage: `url(${background})`,
+          backgroundRepeat: "no-repeat",
+          backgroundHeight: "100vh",
+          backgroundSize: "cover",
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <div>
+          <List
+            id="list"
+            sx={{
+              mx: "auto",
+              width: 400,
+              mt: 20,
+              mb: 20,
+              height: 350,
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+              color: (theme) =>
+                theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+              border: "1px solid",
+              borderColor: (theme) =>
+                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+              borderRadius: 2,
+              textAlign: "center",
+              fontSize: "0.875rem",
+              fontWeight: "700",
+            }}
+          >
+            <ListItem
               sx={{
                 mx: "auto",
-                width: 400,
-                mt: 20,
-                mb: 20,
-                height: 350,
-                bgcolor: (theme) =>
-                  theme.palette.mode === "dark" ? "#101010" : "grey.50",
-                color: (theme) =>
-                  theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-                border: "1px solid",
-                borderColor: (theme) =>
-                  theme.palette.mode === "dark" ? "grey.800" : "grey.300",
-                borderRadius: 2,
+                width: 300,
+                mt: 2.75,
+                justifyContent: "center",
                 textAlign: "center",
-                fontSize: "0.875rem",
+                fontSize: "1.875rem",
                 fontWeight: "700",
               }}
             >
-              <ListItem
+              <label>DataScraper</label>
+            </ListItem>
+            <ListItem
+              sx={{
+                mx: "auto",
+                width: 300,
+              }}
+            >
+              <TextField
                 sx={{
-                  mx: "auto",
-                  width: 300,
-                  mt: 2.75,
-                  justifyContent: "center",
-                  textAlign: "center",
-                  fontSize: "1.875rem",
-                  fontWeight: "700",
-                }}
-              >
-                <label>DataScraper</label>
-              </ListItem>
-              <ListItem
-                sx={{
-                  mx: "auto",
+                  bgcolor: (theme) => theme.palette.mode === "#101010",
                   width: 300,
                 }}
-              >
-                <TextField
-                  sx={{
-                    bgcolor: (theme) =>
-                      theme.palette.mode === "#101010",
-                    width: 300,
-                  }}
-                  id="emailInput"
-                  label="Email"
-                  autoComplete="current-email"
-                  inputRef={email}
-                  required
-                  error={authError}
-                />
-              </ListItem>
-              <ListItem
+                id="emailInput"
+                label="Email"
+                autoComplete="current-email"
+                inputRef={email}
+                required
+                error={authError}
+              />
+            </ListItem>
+            <ListItem
+              sx={{
+                mx: "auto",
+                width: 300,
+              }}
+            >
+              <TextField
                 sx={{
-                  mx: "auto",
+                  bgcolor: (theme) => theme.palette.mode === "#101010",
                   width: 300,
                 }}
-              >
-                <TextField
-                  sx={{
-                    bgcolor: (theme) =>
-                    theme.palette.mode === "#101010",
-                    width: 300,
-                  }}
-                  id="passwordInput"
-                  label="Password"
-                  type="password"
-                  autoComplete="current-password"
-                  inputRef={password}
-                  error={authError}
-                  required
-                  helperText={errorMessage}
-                />
-              </ListItem>
-              <ListItem
+                id="passwordInput"
+                label="Password"
+                type="password"
+                autoComplete="current-password"
+                inputRef={password}
+                error={authError}
+                required
+                helperText={errorMessage}
+              />
+            </ListItem>
+            <ListItem
+              sx={{
+                mx: "auto",
+                width: 300,
+              }}
+            >
+              <Button
+                variant="outlined"
+                onClick={authenticateUser}
                 sx={{
+                  bgcolor: (theme) => theme.palette.mode === "#101010",
                   mx: "auto",
-                  width: 300,
+                  width: 105,
                 }}
               >
-                <Button
-                  variant="outlined"
-                  onClick={authenticateUser}
-                  sx={{
-                    bgcolor: (theme) =>
-                    theme.palette.mode === "#101010",
-                    mx: "auto",
-                    width: 105,
-                  }}
-                >
-                  Login
-                </Button>
-              </ListItem>
-              <ListItem
-                sx={{
-                  mx: "auto",
-                  width: 300,
-                  justifyContent: "center",
-                  textAlign: "center",
-                  fontSize: "0.875rem",
-                  fontWeight: "350",
-                }}
-              >
-                <label>
-                  Don't have an account?{" "}
-                  <Link to="/signup">
-                    Sign up
-                  </Link>
-                  !
-                </label>
-              </ListItem>
-            </List>
-          </div>
-        </Box>
-      </div>
+                Login
+              </Button>
+            </ListItem>
+            <ListItem
+              sx={{
+                mx: "auto",
+                width: 300,
+                justifyContent: "center",
+                textAlign: "center",
+                fontSize: "0.875rem",
+                fontWeight: "350",
+              }}
+            >
+              <label>
+                Don't have an account? <Link to="/signup">Sign up</Link>!
+              </label>
+            </ListItem>
+          </List>
+        </div>
+      </Box>
+    </div>
   );
 }

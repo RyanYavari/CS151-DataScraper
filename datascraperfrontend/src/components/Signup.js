@@ -21,10 +21,10 @@ export default function Signup() {
   const[errorMessage, setMessage] = useState("");
 
   function createNewUser() {
-    console.log(firstName.current.value);
-    console.log(lastName.current.value);
-    console.log(email.current.value);
-    console.log(password.current.value);
+    // console.log(firstName.current.value);
+    // console.log(lastName.current.value);
+    // console.log(email.current.value);
+    // console.log(password.current.value);
     fetch(
       "http://localhost:8080/checkValidUser?firstName=" +
         firstName.current.value +
@@ -39,7 +39,16 @@ export default function Signup() {
       .then((text) => {
         console.log(text);
         if (text === "New user created!") {
-          navigate('/home');
+          fetch("http://localhost:8080/getUser")
+            .then((response) => response.json())
+            .then((result) => {
+              navigate("/home", {state: {
+                firstName: result.firstName,
+                lastName: result.lastName,
+                email: result.email,
+                handles: result.handles 
+              }});
+            });
         } else {
           showError(authError => true);
           setMessage(text);

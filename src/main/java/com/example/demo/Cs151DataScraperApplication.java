@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 import org.springframework.boot.SpringApplication;
@@ -9,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @SpringBootApplication
 @RestController
 public class Cs151DataScraperApplication {
+
+	private User user;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Cs151DataScraperApplication.class, args);
@@ -24,6 +29,7 @@ public class Cs151DataScraperApplication {
 		// currently this is just some dummy code
 		// should be replaced by accessing database and checking there
 		if (email.equals("dfs") && password.equals("dfs")) {
+			user = new User("dfs", "dfs", email, password);
 			return "Authentication successful!";
 		}
 		return "Nonexistent user or incorrect password";
@@ -38,12 +44,19 @@ public class Cs151DataScraperApplication {
 		try {
 			char[] passwordCharArray = password.toCharArray();
 			verifyPassword(passwordCharArray);
-			User user = new User(firstName, lastName, email, password);
+			user = new User(firstName, lastName, email, password);
 			// create new user in database
 			return "New user created!";
 		} catch (PasswordException pE) {
 			return pE.printIssue();
 		}
+	}
+
+	@CrossOrigin
+	@GetMapping("/getUser")
+	public String getUser() throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.writeValueAsString(user);
 	}
 
 	private void verifyPassword(char[] password) throws PasswordException {
