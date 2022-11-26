@@ -12,21 +12,14 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 
-export default function Sidebar({user, showNewBusinessForm}) {
+export default function Sidebar({ user, showNewBusinessForm }) {
+  //  console.log(user);
+  const parseBusiness = JSON.stringify(user.businesses);
+  const businesses = JSON.parse(parseBusiness);
 
-   console.log(user);
-
-   const businesses = [];
-//   const businesses = () => {
-//     businesses = [];
-//     const i = 0;
-//     while (i < user.handles.length) {
-//         businesses[i] = user.handles[i];
-//         i++;
-//     }
-//   }
+  // console.log(businesses);
   const items = [
     {
       href: "/",
@@ -57,11 +50,10 @@ export default function Sidebar({user, showNewBusinessForm}) {
           width: 280,
           fontSize: "1.875rem",
           fontWeight: "500",
-          overflow: "hidden"
+          overflow: "hidden",
         },
       }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-      variant="temporary"
+      variant="permanent"
     >
       <List>
         <ListItem>
@@ -145,7 +137,7 @@ export default function Sidebar({user, showNewBusinessForm}) {
             fontSize: "1.1rem",
             fontWeight: "500",
             ml: 2.5,
-            pb: 0
+            pb: 0,
           }}
         >
           {items[0].icon}
@@ -169,19 +161,23 @@ export default function Sidebar({user, showNewBusinessForm}) {
                 {business.name}
               </MenuItem>
             ))}
-            <MenuItem onClick={() => {showNewBusinessForm(true)}}
-                    sx={{
-                        mt: 1,
-                        justifyContent: "center",
-                        pl: 0
-                    }}
-                >
-                <AddIcon
-                    sx={{
-                        mr: 1,
-                        color: "#93CCFF"
-                    }}
-                /> Add a business
+            <MenuItem
+              onClick={() => {
+                showNewBusinessForm(true);
+              }}
+              sx={{
+                mt: 1,
+                justifyContent: "center",
+                pl: 0,
+              }}
+            >
+              <AddIcon
+                sx={{
+                  mr: 1,
+                  color: "#93CCFF",
+                }}
+              />{" "}
+              Add a business
             </MenuItem>
           </MenuList>
         </ListItem>

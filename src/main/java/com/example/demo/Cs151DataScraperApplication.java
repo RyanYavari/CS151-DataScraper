@@ -1,7 +1,10 @@
 package com.example.demo;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -56,6 +59,13 @@ public class Cs151DataScraperApplication {
 	@GetMapping("/getUser")
 	public String getUser() throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
+		// Commented out code was used to test if frontend was receiving user's businesses info
+		// Business business = new Business("McDonalds", null, null);
+		// Business business1 = new Business("Burger King", null, null);
+		// Business business2 = new Business("In-N-Out", null, null);
+		// user.addBusiness(business);
+		// user.addBusiness(business1);
+		// user.addBusiness(business2);
 		return objectMapper.writeValueAsString(user);
 	}
 

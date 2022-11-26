@@ -28,30 +28,25 @@ export default function Dashboard() {
     firstName: location.state.firstName,
     lastName: location.state.lastName,
     email: location.state.email,
-    handles: location.state.handles,
+    businesses: location.state.businesses
   };
 
-  // console.log(user);
+  console.log(user);
 
   const [newBusinessForm, showNewBusinessForm] = useState(false);
 
   if (newBusinessForm == true) {
     return (
-        <div>
-           <Form user={user}
-           />
-           {/* <Sidebar 
-        user={user} showNewBusinessForm={showNewBusinessForm}
-        /> */}
-        </div>
-      );
-  } 
+      <div>
+        <Sidebar user={user} showNewBusinessForm={showNewBusinessForm} />
+        <Form user={user} />
+      </div>
+    );
+  }
 
   return (
     <div>
-      <Sidebar 
-        user={user} showNewBusinessForm={showNewBusinessForm}
-        />
+      <Sidebar user={user} showNewBusinessForm={showNewBusinessForm} />
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function Login() {
                 firstName: result.firstName,
                 lastName: result.lastName,
                 email: result.email,
-                handles: result.handles 
+                businesses: result.businesses 
               }});
             });
         } else {

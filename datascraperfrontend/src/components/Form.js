@@ -13,10 +13,13 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { Button, Chip, ListItem } from "@mui/material";
 import MenuProps from "@mui/material/Select";
 import background from "./media/background.jpg";
+import { useEffect } from "react";
+
 
 export default function Form({ user }) {
   const [personName, setPersonName] = React.useState([]);
   const [keywords, setKeywords] = useState([]);
+  const windowWidth = window.innerWidth;
 
   const handleChange = (event) => {
     const {
@@ -38,15 +41,19 @@ export default function Form({ user }) {
 
   function createNewBusiness() {}
 
+  console.log(windowWidth - 280);
+
   return (
     <div>
       <Box
         component="form"
         sx={{
           "& .MuiTextField-root": { m: 1, width: "25ch" },
-          width: "100%",
+          width: {windowWidth} - 280,
           height: "100vh",
           zIndex: 100,
+          pl: 35,
+          overflow: "hidden",
           mx: "auto",
           display: "flex",
           justifyContent: "center",

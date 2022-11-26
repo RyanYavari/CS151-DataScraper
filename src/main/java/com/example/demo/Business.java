@@ -8,6 +8,7 @@ public class Business {
 	private String name;
 	private List<String> hashtags = new ArrayList<>();
 	private List<String> keywords = new ArrayList<>();
+	private List<String> handles = new ArrayList<>();
 	
 	public Business(String name, List<String> hashtags, List<String> keywords) {
 		this.name = name;
@@ -38,5 +39,12 @@ public class Business {
 	public void setKeywords(List<String> keywords) {
 		this.keywords = keywords;
 	}
+	
+	public List<String> getHandles() {
+		return this.handles;
+	}
 
+	public void setHandles(List<String> newHandles) {
+		this.handles = newHandles;
+	}
 }

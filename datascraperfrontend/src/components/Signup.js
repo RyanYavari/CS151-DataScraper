@@ -47,7 +47,7 @@ export default function Signup() {
                 firstName: result.firstName,
                 lastName: result.lastName,
                 email: result.email,
-                handles: result.handles 
+                businesses: result.businesses
               }});
             });
         } else {

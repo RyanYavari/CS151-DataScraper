@@ -1,4 +1,5 @@
 package com.example.demo;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,14 +17,14 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password; 
-	private HashMap<Business, List<String>> handles;
+	private List<Business> businesses;
 	
 	public User(String firstName, String lastName, String email, String password) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setEmail(email);
 		this.setPassword(password);
-		setHandles(new HashMap<>());
+		this.businesses = new ArrayList<>();
 	}
 
 	public String getFirstName() {
@@ -60,12 +61,12 @@ public class User {
 		this.password = password;
 	}
 
-	public HashMap<Business, List<String>> getHandles() {
-		return handles;
+	public List<Business> getBusinesses() {
+		return this.businesses;
 	}
 
-	public void setHandles(HashMap<Business, List<String>> handles) {
-		this.handles = handles;
+	public void addBusiness(Business newBusiness) {
+		businesses.add(newBusiness);
 	}
 	
 
