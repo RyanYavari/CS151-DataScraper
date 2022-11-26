@@ -5,12 +5,22 @@ import java.util.List;
 
 public class Business {
 	
+	private String name;
 	private List<String> hashtags = new ArrayList<>();
 	private List<String> keywords = new ArrayList<>();
 	
-	public Business(List<String> hashtags, List<String> keywords) {
+	public Business(String name, List<String> hashtags, List<String> keywords) {
+		this.name = name;
 		this.setHashtags(hashtags);
 		this.setKeywords(keywords);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<String> getHashtags() {

@@ -14,12 +14,27 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
-  
-    const items = [
+  const businesses = [
+    {
+      name: "CodeAcademy",
+    },
+    {
+        name: "Khan Academy"
+    }
+  ];
+  const items = [
     {
       href: "/",
-      icon: <UsersIcon fontSize="small" />,
-      title: " Your Businesses",
+      icon: (
+        <UsersIcon
+          fontSize="small"
+          sx={{
+            mr: 1,
+            fontSize: "1.2rem",
+          }}
+        />
+      ),
+      title: "Businesses",
     },
   ];
 
@@ -33,7 +48,7 @@ export default function Sidebar() {
           color: "#626262",
           width: 280,
           fontSize: "1.875rem",
-          fontWeight: "350",
+          fontWeight: "500",
         },
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
@@ -90,39 +105,62 @@ export default function Sidebar() {
             </AccordionSummary>
             <AccordionDetails>
               <MenuList>
-                <Link 
-                    to="/"
-                    style={{
-                        textDecoration: "none",
-                        color: "#626262"
-                    }}
-                >
-                <MenuItem
-                  sx={{
-                    fontSize: "1rem",
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "#626262",
                   }}
                 >
-                  <LogoutIcon
+                  <MenuItem
                     sx={{
-                      fontSize: "1.1rem",
-                      mr: 1,
+                      fontSize: "1rem",
+                      fontWeight: "500",
                     }}
-                  />{" "}
-                  Logout
-                </MenuItem>
+                  >
+                    <LogoutIcon
+                      sx={{
+                        fontSize: "1rem",
+                        mr: 1,
+                      }}
+                    />{" "}
+                    Logout
+                  </MenuItem>
                 </Link>
               </MenuList>
             </AccordionDetails>
           </Accordion>
         </ListItem>
-
         <ListItem
           sx={{
-            fontSize: "1rem",
+            fontSize: "1.1rem",
+            fontWeight: "500",
+            ml: 1
           }}
         >
           {items[0].icon}
           {items[0].title}
+          <List>
+            
+          </List>
+        </ListItem>
+        <ListItem>
+          <MenuList
+            sx={{
+              width: "100%",
+              fontSize: "0.5rem",
+              fontWeight: "50",
+            }}
+          >
+            {businesses.map((business) => (
+              <MenuItem
+                sx={{
+                    mb: 1,
+                    ml: 1
+                }}
+              >{business.name}</MenuItem>
+            ))}
+          </MenuList>
         </ListItem>
       </List>
     </Drawer>

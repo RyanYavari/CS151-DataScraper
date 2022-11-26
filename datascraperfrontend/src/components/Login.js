@@ -96,7 +96,7 @@ export default function Login() {
                 justifyContent: "center",
                 textAlign: "center",
                 fontSize: "1.875rem",
-                fontWeight: "700",
+                fontWeight: "500",
               }}
             >
               <Box

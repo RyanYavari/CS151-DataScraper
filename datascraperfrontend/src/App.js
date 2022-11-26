@@ -7,10 +7,6 @@ import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  // const [state, setState] = useState('start')
-  // useEffect( () => {
-  //   fetch('http://localhost:8080/hello').then(response=>response.text).then(result=>console.log(result));
-  // }, []);
 
   return (
     <BrowserRouter>

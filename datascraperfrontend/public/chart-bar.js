@@ -3,7 +3,7 @@ import { createSvgIcon } from '@mui/material/utils';
 export const ChartBar = createSvgIcon(
   <svg
     viewBox="0 0 20 18"
-    fill="#93CCFF"
+    fill="#B6DDFF"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
