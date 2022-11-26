@@ -31,5 +31,7 @@ export default function Dashboard() {
 
   // console.log(user);
 
-  return <Sidebar />;
+  return (
+    <Sidebar user = {user}/>
+  );
 }
