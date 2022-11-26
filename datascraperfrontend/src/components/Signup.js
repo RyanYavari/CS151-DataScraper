@@ -80,7 +80,7 @@ export default function Signup() {
               mx: "auto",
               width: 400,
               height: authError ? 545 : 525,
-              mt: authError ? 11 : 12,
+              mt: authError ? 10 : 12,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>

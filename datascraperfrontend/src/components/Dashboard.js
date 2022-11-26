@@ -17,6 +17,8 @@ import {
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Sidebar from "./Sidebar";
+import Form from "./Form";
+import { useState } from "react";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -31,7 +33,25 @@ export default function Dashboard() {
 
   // console.log(user);
 
+  const [newBusinessForm, showNewBusinessForm] = useState(false);
+
+  if (newBusinessForm == true) {
+    return (
+        <div>
+           <Form user={user}
+           />
+           {/* <Sidebar 
+        user={user} showNewBusinessForm={showNewBusinessForm}
+        /> */}
+        </div>
+      );
+  } 
+
   return (
-    <Sidebar user = {user}/>
+    <div>
+      <Sidebar 
+        user={user} showNewBusinessForm={showNewBusinessForm}
+        />
+    </div>
   );
 }
