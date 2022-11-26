@@ -77,7 +77,7 @@ export default function Form({ user }) {
             sx={{
                 mt: 3,
               fontSize: "1.875rem",
-              fontWeight: "400",
+              fontWeight: "500",
               justifyContent: "center",
             }}
           >
