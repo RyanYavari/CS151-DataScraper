@@ -10,6 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import background from "./media/background.jpg";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { ChartBar as ChartBarIcon } from "./icons/chart-bar";
 
 export default function Signup() {
   const firstName = useRef(null);
@@ -78,9 +79,8 @@ export default function Signup() {
             sx={{
               mx: "auto",
               width: 400,
-              mt: 15,
-              mb: 10,
-              height: "65%",
+              height: authError ? 545 : 525,
+              mt: authError ? 11 : 12,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -98,14 +98,49 @@ export default function Signup() {
               sx={{
                 mx: "auto",
                 width: 300,
-                mt: 1.5,
                 justifyContent: "center",
                 textAlign: "center",
                 fontSize: "1.875rem",
                 fontWeight: "700",
               }}
             >
-              <label>DataScraper</label>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  mx: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "grey.50",
+                }}
+              >
+                <List>
+                  <ListItem
+                    sx={{
+                      mb: 0,
+                      pb: 0,
+                      fontSize: "1.875rem",
+                    }}
+                  >
+                    Data
+                  </ListItem>
+                  <ListItem
+                    sx={{
+                      mt: 0,
+                      pt: 0,
+                    }}
+                  >
+                    <ChartBarIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: "1.875rem",
+                      }}
+                      fontSize="small"
+                    />{" "}
+                    Scraper
+                  </ListItem>
+                </List>
+              </Box>
             </ListItem>
             <ListItem
               sx={{

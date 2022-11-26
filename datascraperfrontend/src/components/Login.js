@@ -9,6 +9,8 @@ import background from "./media/background.jpg";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
+import { ChartBar as ChartBarIcon } from "./icons/chart-bar";
 
 export default function Login() {
   const email = useRef(null);
@@ -71,9 +73,9 @@ export default function Login() {
             sx={{
               mx: "auto",
               width: 400,
-              mt: 20,
+              mt: authError ? 19 : 21,
               mb: 20,
-              height: 350,
+              height: authError ? 405 : 380,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -91,14 +93,49 @@ export default function Login() {
               sx={{
                 mx: "auto",
                 width: 300,
-                mt: 2.75,
                 justifyContent: "center",
                 textAlign: "center",
                 fontSize: "1.875rem",
                 fontWeight: "700",
               }}
             >
-              <label>DataScraper</label>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  mx: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "grey.50",
+                }}
+              >
+                <List>
+                  <ListItem
+                    sx={{
+                      mb: 0,
+                      pb: 0,
+                      fontSize: "1.875rem",
+                    }}
+                  >
+                    Data
+                  </ListItem>
+                  <ListItem
+                    sx={{
+                      mt: 0,
+                      pt: 0,
+                    }}
+                  >
+                    <ChartBarIcon
+                      sx={{
+                        mr: 1,
+                        fontSize: "1.875rem",
+                      }}
+                      fontSize="small"
+                    />{" "}
+                    Scraper
+                  </ListItem>
+                </List>
+              </Box>
             </ListItem>
             <ListItem
               sx={{
