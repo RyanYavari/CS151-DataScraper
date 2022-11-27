@@ -47,6 +47,7 @@ export default function Form({ user, setBusinesses, showNewBusinessForm, setBusi
     "Entertainment",
     "Finance",
     "Manufacturing",
+    "Fashion"
   ];
 
   function createNewBusiness() {
