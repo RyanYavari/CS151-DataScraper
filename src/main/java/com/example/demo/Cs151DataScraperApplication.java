@@ -88,6 +88,14 @@ public class Cs151DataScraperApplication {
 		return objectMapper.writeValueAsString(user);
 	}
 
+	@CrossOrigin
+	@GetMapping("/removeBusiness")
+	public String removeBusiness(@RequestParam(name = "businessIdx", defaultValue = "") String businessIdx) throws IOException {
+		user.getBusinesses().remove(Integer.parseInt(businessIdx));
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.writeValueAsString(user);
+	}
+
 	private void createBusiness(String businessName, String keywords, String hashtags) {
 		String[] temp = keywords.split(",");
 		String[] temp1 = hashtags.split(",");

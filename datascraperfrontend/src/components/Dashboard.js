@@ -48,9 +48,10 @@ export default function Dashboard() {
     );
   }
 
+  console.log(businesses);
   return (
     <div>
-      <HandlesView user={user} businesses={businesses} businessIdx={businessIdx} />
+      <HandlesView user={user} businesses={businesses} setBusinesses={setBusinesses} businessIdx={businessIdx} setBusinessIdx={setBusinessIdx} />
       <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} setBusinessIdx={setBusinessIdx} />
     </div>
   );

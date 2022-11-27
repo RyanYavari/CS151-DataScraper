@@ -50,7 +50,6 @@ public class Formatter {
 		data.print();
 		
 		formattedData.formatID();
-
 	}
 	
 

@@ -13,6 +13,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { Button, Hidden } from "@mui/material";
 
 const columns = [
   { id: "name", label: "Twitter Handle", minWidth: 170 },
@@ -23,12 +24,24 @@ function createData(name, relatedTweet) {
   return { name, relatedTweet };
 }
 
-export default function HandlesView({ user, businesses, businessIdx }) {
+export default function HandlesView({ user, businesses, setBusinesses, businessIdx, setBusinessIdx }) {
   const windowWidth = window.innerWidth;
   const hashtags = businesses[businessIdx].hashtags;
   const keywords = businesses[businessIdx].keywords;
 
-  console.log(keywords);
+  function deleteBusiness() {
+    fetch("http://localhost:8080/removeBusiness?businessIdx=" + businessIdx)
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(JSON.parse(result).businesses);
+        setBusinesses(JSON.parse(result).businesses);
+        if (JSON.parse(result).businesses.length == 0) {
+          setBusinessIdx(0);
+        } else {
+          setBusinessIdx(JSON.parse(result).businesses.length - 1);
+        }
+      });
+  }
 
   //   const rows = businesses[businessIdx].handles;
   const rows = [
@@ -93,40 +106,56 @@ export default function HandlesView({ user, businesses, businessIdx }) {
           {businesses[businessIdx].name}
         </ListItem>
         <ListItem>
-          {keywords.map((businessKeyword) => (
-            <Chip
-              key={businessKeyword}
-              label={businessKeyword}
-              variant="outlined"
-              sx={{
-                color: "#FFFFFF",
-                fontSize: "1rem",
-                fontWeight: "350",
-              }}
-              style={{
-                borderColor: "#f5a893",
-                borderWidth: 3,
-                textDecoration: "bold",
-              }}
-            />
-          ))}
-          {hashtags.map((businessKeyword) => (
-            <Chip
-              key={businessKeyword}
-              label={businessKeyword}
-              variant="outlined"
-              sx={{
-                color: "#FFFFFF",
-                fontSize: "1rem",
-                fontWeight: "350",
-              }}
-              style={{
-                borderColor: "#93CCFF",
-                borderWidth: 3,
-                textDecoration: "bold",
-              }}
-            />
-          ))}
+          <div style={{width: 1000}}>
+            {keywords.map((businessKeyword) => (
+              <Chip
+                key={businessKeyword}
+                label={businessKeyword}
+                variant="outlined"
+                sx={{
+                  color: "#FFFFFF",
+                  fontSize: "1rem",
+                  fontWeight: "350",
+                }}
+                style={{
+                  borderColor: "#f5a893",
+                  borderWidth: 2.25,
+                  textDecoration: "bold",
+                }}
+              />
+            ))}
+            {hashtags.map((businessKeyword) => (
+              <Chip
+                key={businessKeyword}
+                label={businessKeyword}
+                variant="outlined"
+                sx={{
+                  color: "#FFFFFF",
+                  fontSize: "1rem",
+                  fontWeight: "350",
+                }}
+                style={{
+                  borderColor: "#93CCFF",
+                  borderWidth: 2.25,
+                  textDecoration: "bold",
+                }}
+              />
+            ))}
+            <div style={{ float: "right" }}>
+              <Button
+                variant="outlined"
+                onClick={deleteBusiness}
+                sx={{
+                  mx: "auto",
+                  width: 105,
+                  color: "#fcfcfc",
+                  borderColor: "#fcfcfc",
+                }}
+              >
+                Delete
+              </Button>
+            </div>
+          </div>
         </ListItem>
         <ListItem>
           <Paper
