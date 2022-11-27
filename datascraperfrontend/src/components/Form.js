@@ -12,12 +12,12 @@ import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { Button, Chip, ListItem } from "@mui/material";
 import MenuProps from "@mui/material/Select";
-import background from "./media/background.jpg";
+import background from "./media/background1.jpg";
 import { useEffect } from "react";
 import { useRef } from "react";
 import Stack from "@mui/material/Stack";
 
-export default function Form({ user, setBusinesses }) {
+export default function Form({ user, setBusinesses, showNewBusinessForm, setBusinessIdx }) {
   const [personName, setPersonName] = React.useState([]);
   const windowWidth = window.innerWidth;
   const businessName = useRef(null);
@@ -42,7 +42,7 @@ export default function Form({ user, setBusinesses }) {
     "Sports",
     "Food",
     "Transportation",
-    "Investment",
+    "Education",
     "Health",
     "Entertainment",
     "Finance",
@@ -62,6 +62,8 @@ export default function Form({ user, setBusinesses }) {
       .then((result) => {
         console.log(JSON.parse(result).businesses);
         setBusinesses(JSON.parse(result).businesses);
+        setBusinessIdx(JSON.parse(result).businesses.length - 1);
+        showNewBusinessForm(false);
       });
   }
 
@@ -111,8 +113,7 @@ export default function Form({ user, setBusinesses }) {
             mt: showChip ? 13 : 15,
             width: "40%",
             height: showChip ? "70%" : "65%",
-            bgcolor: (theme) =>
-              theme.palette.mode === "dark" ? "#101010" : "grey.50",
+            bgcolor: "#fcfcfc",
             color: (theme) =>
               theme.palette.mode === "dark" ? "grey.300" : "grey.800",
             border: "1px solid",
@@ -211,6 +212,7 @@ export default function Form({ user, setBusinesses }) {
                   }}
                   style={{
                     borderColor: "#93CCFF",
+                    borderWidth: 2,
                   }}
                   onDelete={ (e) => handleDelete(e, businessKeyword)} />
               ))}

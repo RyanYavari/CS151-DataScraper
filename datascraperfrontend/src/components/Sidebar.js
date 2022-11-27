@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function Sidebar({ user, businesses, showNewBusinessForm }) {
+export default function Sidebar({ user, businesses, showNewBusinessForm, setBusinessIdx }) {
 
   const items = [
     {
@@ -38,7 +38,7 @@ export default function Sidebar({ user, businesses, showNewBusinessForm }) {
       BackdropProps={{ invisible: true }}
       PaperProps={{
         sx: {
-          backgroundColor: "neutral.900",
+          backgroundColor: "#ffffff",
           color: "#626262",
           width: 280,
           fontSize: "1.875rem",
@@ -55,6 +55,7 @@ export default function Sidebar({ user, businesses, showNewBusinessForm }) {
               width: "100%",
               height: "100%",
               mx: "auto",
+              backgroundColor: "#fcfcfc"
             }}
           >
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -65,7 +66,7 @@ export default function Sidebar({ user, businesses, showNewBusinessForm }) {
                   mx: "auto",
                   display: "flex",
                   justifyContent: "center",
-                  backgroundColor: "#FFFFFF",
+                  backgroundColor: "#fcfcfc",
                   borderRadius: 2,
                 }}
               >
@@ -149,6 +150,12 @@ export default function Sidebar({ user, businesses, showNewBusinessForm }) {
               <MenuItem
                 sx={{
                   pl: 6,
+                }}
+                onClick={() => {
+                  showNewBusinessForm(false);
+                  const i = businesses.indexOf(business);
+                  console.log(i);
+                  setBusinessIdx(i);
                 }}
               >
                 {business.name}

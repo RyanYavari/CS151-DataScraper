@@ -19,6 +19,7 @@ import ListItem from "@mui/material/ListItem";
 import Sidebar from "./Sidebar";
 import Form from "./Form";
 import { useState } from "react";
+import HandlesView from "./HandlesView";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -36,19 +37,21 @@ export default function Dashboard() {
 
   const [newBusinessForm, showNewBusinessForm] = useState(false);
   const [businesses, setBusinesses] = useState(JSON.parse(parseBusiness));
+  const [businessIdx, setBusinessIdx] = useState(0);
 
   if (newBusinessForm == true || businesses.length == 0) {
     return (
       <div>
-        <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} />
-        <Form user={user} setBusinesses={setBusinesses}/>
+        <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} setBusinessIdx={setBusinessIdx} />
+        <Form user={user} setBusinesses={setBusinesses} showNewBusinessForm={showNewBusinessForm} setBusinessIdx={setBusinessIdx}/>
       </div>
     );
   }
 
   return (
     <div>
-      <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} />
+      <HandlesView user={user} businesses={businesses} businessIdx={businessIdx} />
+      <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} setBusinessIdx={setBusinessIdx} />
     </div>
   );
 }
