@@ -64,10 +64,6 @@ public class User {
 	public List<Business> getBusinesses() {
 		return this.businesses;
 	}
-
-	public void addBusiness(Business newBusiness) {
-		businesses.add(newBusiness);
-	}
 	
 
 }

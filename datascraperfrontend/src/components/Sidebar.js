@@ -14,12 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 
-export default function Sidebar({ user, showNewBusinessForm }) {
-  //  console.log(user);
-  const parseBusiness = JSON.stringify(user.businesses);
-  const businesses = JSON.parse(parseBusiness);
+export default function Sidebar({ user, businesses, showNewBusinessForm }) {
 
-  // console.log(businesses);
   const items = [
     {
       href: "/",
@@ -39,10 +35,7 @@ export default function Sidebar({ user, showNewBusinessForm }) {
   return (
     <Drawer
       anchor="left"
-      open="true"
       BackdropProps={{ invisible: true }}
-      hideBackdrop="true"
-      elevation="3"
       PaperProps={{
         sx: {
           backgroundColor: "neutral.900",
@@ -176,7 +169,7 @@ export default function Sidebar({ user, showNewBusinessForm }) {
                   mr: 1,
                   color: "#93CCFF",
                 }}
-              />{" "}
+              />
               Add a business
             </MenuItem>
           </MenuList>

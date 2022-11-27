@@ -30,23 +30,25 @@ export default function Dashboard() {
     email: location.state.email,
     businesses: location.state.businesses
   };
+  const parseBusiness = JSON.stringify(user.businesses);
 
-  console.log(user);
+  // console.log(user);
 
   const [newBusinessForm, showNewBusinessForm] = useState(false);
+  const [businesses, setBusinesses] = useState(JSON.parse(parseBusiness));
 
-  if (newBusinessForm == true) {
+  if (newBusinessForm == true || businesses.length == 0) {
     return (
       <div>
-        <Sidebar user={user} showNewBusinessForm={showNewBusinessForm} />
-        <Form user={user} />
+        <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} />
+        <Form user={user} setBusinesses={setBusinesses}/>
       </div>
     );
   }
 
   return (
     <div>
-      <Sidebar user={user} showNewBusinessForm={showNewBusinessForm} />
+      <Sidebar user={user} businesses={businesses} showNewBusinessForm={showNewBusinessForm} />
     </div>
   );
 }

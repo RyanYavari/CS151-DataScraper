@@ -20,8 +20,8 @@ export default function Login() {
   const [errorMessage, setMessage] = useState("");
 
   function authenticateUser() {
-    console.log(email.current.value);
-    console.log(password.current.value);
+    // console.log(email.current.value);
+    // console.log(password.current.value);
     fetch(
       "http://localhost:8080/authenticate?email=" +
         email.current.value +

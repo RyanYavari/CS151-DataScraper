@@ -3,6 +3,9 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect
 public class Business {
 	
 	private String name;
