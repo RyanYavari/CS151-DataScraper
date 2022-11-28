@@ -73,7 +73,7 @@ export default function Login() {
             sx={{
               mx: "auto",
               width: 400,
-              mt: authError ? 19 : 21,
+              mt: authError ? 19 : 20,
               mb: 20,
               height: authError ? 405 : 380,
               bgcolor: "#fcfcfc",
@@ -105,7 +105,7 @@ export default function Login() {
                   mx: "auto",
                   display: "flex",
                   justifyContent: "center",
-                  backgroundColor: "grey.50",
+                  backgroundColor: "#fcfcfc",
                 }}
               >
                 <List>

@@ -80,7 +80,7 @@ export default function Signup() {
               mx: "auto",
               width: 400,
               height: authError ? 545 : 525,
-              mt: authError ? 10 : 12,
+              mt: authError ? 10 : 11,
               bgcolor: "#fcfcfc",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
@@ -110,7 +110,7 @@ export default function Signup() {
                   mx: "auto",
                   display: "flex",
                   justifyContent: "center",
-                  backgroundColor: "grey.50",
+                  backgroundColor: "#fcfcfc",
                 }}
               >
                 <List>
