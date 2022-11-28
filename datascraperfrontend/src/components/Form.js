@@ -48,13 +48,16 @@ export default function Form({
     "Technology",
     "Sports",
     "Food",
+    "Pets",
     "Transportation",
     "Education",
     "Entertainment",
     "Finance",
+    "Art",
     "Manufacturing",
     "Fashion",
     "Social Media",
+    "Space",
     "Nonprofit",
     "Healthcare"
   ];
@@ -213,7 +216,7 @@ export default function Form({
             <TextField
               required
               id="outlined-required"
-              label="Individual Keyword Weight"
+              label="Number of Results"
               helperText="Between 10 and 100 (inclusive)"
               inputRef={numberOfResults}
               error={numError}
