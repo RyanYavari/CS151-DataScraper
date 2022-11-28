@@ -41,7 +41,7 @@ public class Formatter {
 	}
 
 	public void format() throws JsonMappingException, JsonProcessingException, JSONException, UnirestException {
-
+		try {
 		JSONArray array = new JSONArray(unformatted.toString().substring(8));  
 		String tempPlacer;
 		String currentUser;
@@ -59,6 +59,9 @@ public class Formatter {
 			
 			
 		}  
+		} catch(JSONException e) {
+			System.out.println("Sorry, no tweets contain those keywords.");
+		}
 		
 	}  
 
@@ -80,22 +83,23 @@ public class Formatter {
 		}
 	}
 
-	// public static void main(String[] args) throws IOException, URISyntaxException, UnirestException {
-	// 	Parser data = new Parser("Ostrich,egg", 20);
-	// 	Formatter formattedData = new Formatter(data.getOutput());
-
-	// 	data.print();
+// 	public static void main(String[] args) throws IOException, URISyntaxException, UnirestException {
 		
-	// 	System.out.println();
+// 		Parser data = new Parser("dog,cat,pet,erewr", 50);
+// 		Formatter formattedData = new Formatter(data.getOutput());
 
-	// 	formattedData.format();
+// 		data.print();
 		
-	// 	formattedData.print();
+// 		System.out.println();
 
-	// 	System.out.println();
-	// 	System.out.println();
-	// 	System.out.println();
-	// }
+// 		formattedData.format();
+		
+// 		formattedData.print();
+
+// 		System.out.println();
+// 		System.out.println();
+// 		System.out.println();
+// 	}
 
 	public Map<String, String> getUserInfo() {
 		return userInfo;
