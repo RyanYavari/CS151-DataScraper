@@ -57,12 +57,6 @@ export default function Form({
   ];
 
   function createNewBusiness() {
-    // const business = {
-    //   name: businessName.current.value,
-    //   keywords: { keywords },
-    //   hashtags: { hashtags },
-    //   handles: [],
-    // };
     if (
       numberOfResults.current.value < 10 ||
       numberOfResults.current.value > 100
@@ -210,7 +204,7 @@ export default function Form({
             <TextField
               required
               id="outlined-required"
-              label="Number of Results"
+              label="Individual Keyword Weight"
               helperText="Between 10 and 100 (inclusive)"
               inputRef={numberOfResults}
               error={numError}
