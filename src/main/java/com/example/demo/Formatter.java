@@ -80,22 +80,22 @@ public class Formatter {
 		}
 	}
 
-	public static void main(String[] args) throws IOException, URISyntaxException, UnirestException {
-		Parser data = new Parser("Ostrich,egg", 20);
-		Formatter formattedData = new Formatter(data.getOutput());
+	// public static void main(String[] args) throws IOException, URISyntaxException, UnirestException {
+	// 	Parser data = new Parser("Ostrich,egg", 20);
+	// 	Formatter formattedData = new Formatter(data.getOutput());
 
-		data.print();
+	// 	data.print();
 		
-		System.out.println();
+	// 	System.out.println();
 
-		formattedData.format();
+	// 	formattedData.format();
 		
-		formattedData.print();
+	// 	formattedData.print();
 
-		System.out.println();
-		System.out.println();
-		System.out.println();
-	}
+	// 	System.out.println();
+	// 	System.out.println();
+	// 	System.out.println();
+	// }
 
 	public Map<String, String> getUserInfo() {
 		return userInfo;

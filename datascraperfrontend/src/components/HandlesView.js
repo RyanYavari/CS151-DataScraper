@@ -14,6 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Button, Hidden } from "@mui/material";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 const columns = [
   { id: "name", label: "Twitter Handle", minWidth: 170 },
@@ -24,8 +25,16 @@ function createData(name, relatedTweet) {
   return { name, relatedTweet };
 }
 
-export default function HandlesView({ user, businesses, setBusinesses, businessIdx, setBusinessIdx }) {
+export default function HandlesView({
+  user,
+  businesses,
+  setBusinesses,
+  businessIdx,
+  setBusinessIdx,
+}) {
   const windowWidth = window.innerWidth;
+  const handles = businesses[businessIdx].handles;
+  const tweets = businesses[businessIdx].tweets;
   const hashtags = businesses[businessIdx].hashtags;
   const keywords = businesses[businessIdx].keywords;
 
@@ -43,24 +52,12 @@ export default function HandlesView({ user, businesses, setBusinesses, businessI
       });
   }
 
-  //   const rows = businesses[businessIdx].handles;
-  const rows = [
-    createData("India", "IN"),
-    createData("China", "CN"),
-    createData("Italy", "IT"),
-    createData("United States", "US", 327167434, 9833520),
-    createData("Canada", "CA", 37602103, 9984670),
-    createData("Australia", "AU", 25475400, 7692024),
-    createData("Germany", "DE", 83019200, 357578),
-    createData("Ireland", "IE", 4857000, 70273),
-    createData("Mexico", "MX", 126577691, 1972550),
-    createData("Japan", "JP", 126317000, 377973),
-    createData("France", "FR", 67022000, 640679),
-    createData("United Kingdom", "GB", 67545757, 242495),
-    createData("Russia", "RU", 146793744, 17098246),
-    createData("Nigeria", "NG", 200962417, 923768),
-    createData("Brazil", "BR", 210147125, 8515767),
-  ];
+  console.log(handles);
+
+  const rows = [];
+  for (let i = 0; i < handles.length; i++) {
+    rows.push(createData(handles[i], tweets[i]));
+  }
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -106,7 +103,7 @@ export default function HandlesView({ user, businesses, setBusinesses, businessI
           {businesses[businessIdx].name}
         </ListItem>
         <ListItem>
-          <div style={{width: 1000}}>
+          <div style={{ width: 1000 }}>
             {keywords.map((businessKeyword) => (
               <Chip
                 key={businessKeyword}
@@ -193,11 +190,13 @@ export default function HandlesView({ user, businesses, setBusinesses, businessI
                         >
                           {columns.map((column) => {
                             const value = row[column.id];
+                            let link = "";
+                            {column.id === "relatedTweet" ? link = value : link = "https://twitter.com/" + value}
                             return (
                               <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === "number"
+                                <a style={{textDecoration: 'none', color: "#0a8dad" }} target="_blank" href={link}>{column.format && typeof value === "number"
                                   ? column.format(value)
-                                  : value}
+                                  : value}</a>
                               </TableCell>
                             );
                           })}

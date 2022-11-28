@@ -9,9 +9,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class Business {
 	
 	private String name;
-	private List<String> hashtags = new ArrayList<>();
-	private List<String> keywords = new ArrayList<>();
+	private List<String> hashtags;
+	private List<String> keywords;
 	private List<String> handles = new ArrayList<>();
+	private List<String> tweets = new ArrayList<>();
 	
 	public Business(String name, List<String> hashtags, List<String> keywords) {
 		this.name = name;
@@ -49,5 +50,13 @@ public class Business {
 
 	public void setHandles(List<String> newHandles) {
 		this.handles = newHandles;
+	}
+
+	public List<String> getTweets() {
+		return this.tweets;
+	}
+
+	public void setTweets(List<String> newTweets) {
+		this.tweets = newTweets;
 	}
 }
