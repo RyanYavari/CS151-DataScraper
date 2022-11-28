@@ -131,8 +131,7 @@ public class Cs151DataScraperApplication {
 	private Formatter getTwitterData(List<String> h, List<String> k, String keywords, String hashtags,
 			String numberOfResults)
 			throws IOException, URISyntaxException, UnirestException {
-		System.out.println(h.get(0));
-		Parser data = new Parser(h.get(0), Integer.parseInt(numberOfResults));
+		Parser data = new Parser(hashtags, Integer.parseInt(numberOfResults));
 		Formatter formattedData = new Formatter(data.getOutput());
 
 		data.print();
@@ -141,20 +140,20 @@ public class Cs151DataScraperApplication {
 
 		formattedData.format();
 
-		for (int i = 1; i < h.size(); i++) {
-			Parser dataTemp = new Parser(h.get(i), Integer.parseInt(numberOfResults));
-			Formatter formattedDataTemp = new Formatter(dataTemp.getOutput());
+		// for (int i = 1; i < h.size(); i++) {
+		// 	Parser dataTemp = new Parser(h.get(i), Integer.parseInt(numberOfResults));
+		// 	Formatter formattedDataTemp = new Formatter(dataTemp.getOutput());
 
-			dataTemp.print();
+		// 	dataTemp.print();
 
-			System.out.println();
+		// 	System.out.println();
 
-			formattedDataTemp.format();
+		// 	formattedDataTemp.format();
 			
-			for (Map.Entry<String, String> pair : formattedDataTemp.getUserInfo().entrySet()) {
-				formattedData.getUserInfo().put(pair.getKey(), pair.getValue());
-			}
-		}
+		// 	for (Map.Entry<String, String> pair : formattedDataTemp.getUserInfo().entrySet()) {
+		// 		formattedData.getUserInfo().put(pair.getKey(), pair.getValue());
+		// 	}
+		// }
 
 		formattedData.print();
 		return formattedData;

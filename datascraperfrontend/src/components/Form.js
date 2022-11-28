@@ -21,6 +21,7 @@ export default function Form({
   setBusinesses,
   showNewBusinessForm,
   setBusinessIdx,
+  setNeedLoadingScreen
 }) {
   const [personName, setPersonName] = React.useState([]);
   const windowWidth = window.innerWidth;
@@ -57,6 +58,7 @@ export default function Form({
   ];
 
   function createNewBusiness() {
+    setNeedLoadingScreen(true);
     if (
       numberOfResults.current.value < 10 ||
       numberOfResults.current.value > 100
@@ -64,26 +66,31 @@ export default function Form({
       showError(true);
     } else {
       for (var i = 0; i < hashtags.length; i++) {
-        hashtags[i] = hashtags[i].replace(/\s+/g, "");
+        hashtags[i] = hashtags[i].replace(/\s+/g, ",");
       }
-      fetch(
-        "http://localhost:8080/addNewBusiness?businessName=" +
-          businessName.current.value +
-          "&keywords=" +
-          keywords +
-          "&hashtags=" +
-          hashtags +
-          "&numberOfResults=" +
-          numberOfResults.current.value
-      )
-        .then((response) => response.text())
-        .then((result) => {
-          console.log(JSON.parse(result).businesses);
-          setBusinesses(JSON.parse(result).businesses);
-          setBusinessIdx(JSON.parse(result).businesses.length - 1);
-          showNewBusinessForm(false);
-        });
+      fetchData();
     }
+  }
+
+  async function fetchData() {
+    fetch(
+      "http://localhost:8080/addNewBusiness?businessName=" +
+        businessName.current.value +
+        "&keywords=" +
+        keywords +
+        "&hashtags=" +
+        hashtags +
+        "&numberOfResults=" +
+        numberOfResults.current.value
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(JSON.parse(result).businesses);
+        setBusinesses(JSON.parse(result).businesses);
+        setBusinessIdx(JSON.parse(result).businesses.length - 1);
+        showNewBusinessForm(false);
+        setNeedLoadingScreen(false);
+      });
   }
 
   function createChip(e) {
