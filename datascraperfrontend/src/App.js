@@ -17,7 +17,8 @@ function App() {
     tag.async = false;
     tag.src = src;
     document.getElementsByTagName('body')[0].appendChild(tag);
-}
+  }
+
 
 
 loadScript('assets/js/jquery.min.js')
