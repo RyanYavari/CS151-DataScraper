@@ -5,7 +5,7 @@ import { Button, Hidden } from "@mui/material";
 import Box from "@mui/material/Box";
 import List, { listClasses } from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import background from "./media/background.jpg";
+import background from "./media/background1.jpg";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -73,11 +73,10 @@ export default function Login() {
             sx={{
               mx: "auto",
               width: 400,
-              mt: authError ? 19 : 21,
+              mt: authError ? 19 : 20,
               mb: 20,
               height: authError ? 405 : 380,
-              bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+              bgcolor: "#fcfcfc",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",
@@ -106,7 +105,7 @@ export default function Login() {
                   mx: "auto",
                   display: "flex",
                   justifyContent: "center",
-                  backgroundColor: "grey.50",
+                  backgroundColor: "#fcfcfc",
                 }}
               >
                 <List>

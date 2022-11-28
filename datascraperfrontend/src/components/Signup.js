@@ -7,7 +7,7 @@ import { Button, Hidden } from "@mui/material";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import background from "./media/background.jpg";
+import background from "./media/background1.jpg";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ChartBar as ChartBarIcon } from "./icons/chart-bar";
@@ -80,9 +80,8 @@ export default function Signup() {
               mx: "auto",
               width: 400,
               height: authError ? 545 : 525,
-              mt: authError ? 10 : 12,
-              bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+              mt: authError ? 10 : 11,
+              bgcolor: "#fcfcfc",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",
@@ -111,7 +110,7 @@ export default function Signup() {
                   mx: "auto",
                   display: "flex",
                   justifyContent: "center",
-                  backgroundColor: "grey.50",
+                  backgroundColor: "#fcfcfc",
                 }}
               >
                 <List>

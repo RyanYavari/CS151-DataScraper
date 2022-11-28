@@ -12,12 +12,17 @@ import ListItemText from "@mui/material/ListItemText";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { Button, Chip, ListItem } from "@mui/material";
 import MenuProps from "@mui/material/Select";
-import background from "./media/background.jpg";
-import { useEffect } from "react";
+import background from "./media/background1.jpg";
 import { useRef } from "react";
 import Stack from "@mui/material/Stack";
 
-export default function Form({ user, setBusinesses }) {
+export default function Form({
+  user,
+  setBusinesses,
+  showNewBusinessForm,
+  setBusinessIdx,
+  setNeedLoadingScreen
+}) {
   const [personName, setPersonName] = React.useState([]);
   const windowWidth = window.innerWidth;
   const businessName = useRef(null);
@@ -25,6 +30,8 @@ export default function Form({ user, setBusinesses }) {
   const [hashtags, setBusinessKeywords] = useState([]);
   const businessKeyword = useRef(null);
   const [showChip, setShowChip] = useState(false);
+  const numberOfResults = useRef(null);
+  const [numError, showError] = useState(false);
 
   const handleChange = (event) => {
     const {
@@ -41,27 +48,53 @@ export default function Form({ user, setBusinesses }) {
     "Technology",
     "Sports",
     "Food",
+    "Pets",
     "Transportation",
-    "Investment",
-    "Health",
+    "Education",
     "Entertainment",
     "Finance",
+    "Art",
     "Manufacturing",
+    "Fashion",
+    "Social Media",
+    "Space",
+    "Nonprofit",
+    "Healthcare"
   ];
 
   function createNewBusiness() {
-    const business = {
-      name: businessName.current.value,
-      keywords: { keywords },
-      hashtags: { hashtags },
-      handles: []
-    };
-    fetch("http://localhost:8080/addNewBusiness?businessName=" + business.name
-      +"&keywords=" + keywords + "&hashtags=" + hashtags)
+    setNeedLoadingScreen(true);
+    if (
+      numberOfResults.current.value < 10 ||
+      numberOfResults.current.value > 100
+    ) {
+      showError(true);
+    } else {
+      for (var i = 0; i < hashtags.length; i++) {
+        hashtags[i] = hashtags[i].replace(/\s+/g, "_");
+      }
+      fetchData();
+    }
+  }
+
+  async function fetchData() {
+    fetch(
+      "http://localhost:8080/addNewBusiness?businessName=" +
+        businessName.current.value +
+        "&keywords=" +
+        keywords +
+        "&hashtags=" +
+        hashtags +
+        "&numberOfResults=" +
+        numberOfResults.current.value
+    )
       .then((response) => response.text())
       .then((result) => {
         console.log(JSON.parse(result).businesses);
         setBusinesses(JSON.parse(result).businesses);
+        setBusinessIdx(JSON.parse(result).businesses.length - 1);
+        showNewBusinessForm(false);
+        setNeedLoadingScreen(false);
       });
   }
 
@@ -71,7 +104,7 @@ export default function Form({ user, setBusinesses }) {
       const newBusinessKeywords = [...hashtags, businessKeyword.current.value];
       setBusinessKeywords(newBusinessKeywords);
       businessKeyword.current.value = "";
-    } 
+    }
     console.log(hashtags);
   }
 
@@ -82,7 +115,7 @@ export default function Form({ user, setBusinesses }) {
     }
     e.preventDefault();
     setBusinessKeywords(hashtags.filter((keyword) => keyword !== value));
-  }
+  };
 
   return (
     <div>
@@ -108,11 +141,10 @@ export default function Form({ user, setBusinesses }) {
       >
         <List
           sx={{
-            mt: showChip ? 13 : 15,
+            mt: showChip ? 16 : 20,
             width: "40%",
-            height: showChip ? "70%" : "65%",
-            bgcolor: (theme) =>
-              theme.palette.mode === "dark" ? "#101010" : "grey.50",
+            height: showChip ? "60%" : "53%",
+            bgcolor: "#fcfcfc",
             color: (theme) =>
               theme.palette.mode === "dark" ? "grey.300" : "grey.800",
             border: "1px solid",
@@ -143,12 +175,6 @@ export default function Form({ user, setBusinesses }) {
               label="Business Name"
               inputRef={businessName}
             />
-          </ListItem>
-          <ListItem
-            sx={{
-              justifyContent: "center",
-            }}
-          >
             <div>
               <FormControl sx={{ m: 1, width: "25ch" }}>
                 <InputLabel id="demo-multiple-checkbox-label">
@@ -187,6 +213,14 @@ export default function Form({ user, setBusinesses }) {
               helperText="Hit 'Enter' after each keyword"
               inputRef={businessKeyword}
             />
+            <TextField
+              required
+              id="outlined-required"
+              label="Number of Results"
+              helperText="Between 10 and 100 (inclusive)"
+              inputRef={numberOfResults}
+              error={numError}
+            />
           </ListItem>
           <ListItem
             sx={{
@@ -194,25 +228,31 @@ export default function Form({ user, setBusinesses }) {
               justifyContent: "center",
             }}
           >
-            <Stack direction="row" spacing={1} width="35%"
+            <Stack
+              direction="row"
+              spacing={1}
+              width="35%"
               sx={{
                 mx: "auto",
                 justifyContent: "center",
               }}
             >
               {hashtags.map((businessKeyword) => (
-                <Chip key={businessKeyword} 
-                  label={businessKeyword} 
+                <Chip
+                  key={businessKeyword}
+                  label={businessKeyword}
                   variant="outlined"
                   sx={{
-                    '& .MuiChip-deleteIcon': {
+                    "& .MuiChip-deleteIcon": {
                       color: "#93CCFF",
                     },
                   }}
                   style={{
                     borderColor: "#93CCFF",
+                    borderWidth: 2,
                   }}
-                  onDelete={ (e) => handleDelete(e, businessKeyword)} />
+                  onDelete={(e) => handleDelete(e, businessKeyword)}
+                />
               ))}
             </Stack>
           </ListItem>
@@ -228,7 +268,7 @@ export default function Form({ user, setBusinesses }) {
               sx={{
                 bgcolor: (theme) => theme.palette.mode === "#101010",
                 width: 100,
-                mt: showChip ? 1 : 0
+                mt: showChip ? 1 : 0,
               }}
             >
               Generate

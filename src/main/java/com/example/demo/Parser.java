@@ -3,21 +3,10 @@ package com.example.demo;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
-//
-//
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 /*
  * Code sampled from and credited to: https://github.com/twitterdev/Twitter-API-v2-sample-code
@@ -28,41 +17,29 @@ import org.apache.http.util.EntityUtils;
 public class Parser{
 	
 	//Attributes
-	private String query;
-	private String bearerToken = "AAAAAAAAAAAAAAAAAAAAAK72jQEAAAAAb8Ztc3RNyaHKv3pK87WmdXD21OY%3DK6suYuVRXwAbzG5Twy5E8jfWcEnW3gvVbK1q8nr3YHsI5rSV42"; 
+	private static String query;
+	private static String bearerToken = "AAAAAAAAAAAAAAAAAAAAAK72jQEAAAAAb8Ztc3RNyaHKv3pK87WmdXD21OY%3DK6suYuVRXwAbzG5Twy5E8jfWcEnW3gvVbK1q8nr3YHsI5rSV42"; 
 	private String output;
+	private static int max_results;
 	
-	
-	public Parser(String query) throws IOException, URISyntaxException{	
-		this.query = query;
-		output = search(query, bearerToken);
+	public Parser(String query, int max_results) throws IOException, URISyntaxException, UnirestException{
+		Parser.max_results = max_results;
+		Parser.query = query;
+		output = search();
 	}
 	
-	public static void main(String[] args) throws IOException, URISyntaxException {
-		Parser test = new Parser("Polar bears");
-		test.print();
-	
-	}
-
+//	public static void main(String[] args) throws IOException, URISyntaxException, UnirestException {
+//		Parser test = new Parser("ostrich,egg");
+//		test.print();
 //
-//  public static void main(String args[]) throws IOException, URISyntaxException {
-//    String bearerToken = "AAAAAAAAAAAAAAAAAAAAAK72jQEAAAAAb8Ztc3RNyaHKv3pK87WmdXD21OY%3DK6suYuVRXwAbzG5Twy5E8jfWcEnW3gvVbK1q8nr3YHsI5rSV42";
-//    if (null != bearerToken) {
-//      //Replace the search term with a term of your choice
-//      String response = search("scientology", bearerToken);
-//
-//      System.out.println(response);
-//    } else {
-//      System.out.println("There was a problem getting you bearer token. Please make sure you set the BEARER_TOKEN environment variable");
-//    }
-//  }
+//	}
 
   public String getQuery() {
 		return query;
 	}
 
 	public void setQuery(String query) {
-		this.query = query;
+		Parser.query = query;
 	}
 
 	public String getBearerToken() {
@@ -70,7 +47,7 @@ public class Parser{
 	}
 
 	public void setBearerToken(String bearerToken) {
-		this.bearerToken = bearerToken;
+		Parser.bearerToken = bearerToken;
 	}
 
 	public String getOutput() {
@@ -85,34 +62,31 @@ public class Parser{
 	public void print() {
 		System.out.println(output);
 	}
+  
+  public static String search() throws UnirestException {
+	  Unirest.setTimeouts(0, 0);
+	  com.mashape.unirest.http.HttpResponse<String> response = 
+			  Unirest.get("https://api.twitter.com/2/tweets/search/recent?max_results=" + max_results + "&expansions="
+			  		+ "author_id"
+			  		+ "&query=" + query)
+			  
+	    .header("Authorization", "Bearer " + bearerToken)
+	    .header("Cookie", "guest_id=v1%3A166927603438120108; "
+	    		+ "guest_id_ads=v1%3A166927603438120108; "
+	    		+ "guest_id_marketing=v1%3A166927603438120108; "
+	    		+ "personalization_id=\"v1_/U2whbVZ7r3qGH9DnE7qVw==\"")
+	    .asString();
+	  return response.getBody();
 
-/*
-   * This method calls the recent search endpoint with a the search term passed to it as a query parameter
-   * */
-  private static String search(String searchString, String bearerToken) throws IOException, URISyntaxException {
-    String searchResponse = null;
-
-    HttpClient httpClient = HttpClients.custom()
-        .setDefaultRequestConfig(RequestConfig.custom()
-            .setCookieSpec(CookieSpecs.STANDARD).build())
-        .build();
-
-    URIBuilder uriBuilder = new URIBuilder("https://api.twitter.com/2/tweets/search/recent");
-    ArrayList<NameValuePair> queryParameters;
-    queryParameters = new ArrayList<>();
-    queryParameters.add(new BasicNameValuePair("query", searchString));
-    uriBuilder.addParameters(queryParameters);
-
-    HttpGet httpGet = new HttpGet(uriBuilder.build());
-    httpGet.setHeader("Authorization", String.format("Bearer %s", bearerToken));
-    httpGet.setHeader("Content-Type", "application/json");
-
-    HttpResponse response = httpClient.execute(httpGet);
-    HttpEntity entity = response.getEntity();
-    if (null != entity) {
-      searchResponse = EntityUtils.toString(entity, "UTF-8");
-    }
-    return searchResponse;
+  }
+  
+  public static String searchUsername(String userID) throws UnirestException {
+	  Unirest.setTimeouts(0, 0);
+	  HttpResponse<String> response = Unirest.get("https://api.twitter.com/2/users/" + userID)
+	    .header("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAK72jQEAAAAAb8Ztc3RNyaHKv3pK87WmdXD21OY%3DK6suYuVRXwAbzG5Twy5E8jfWcEnW3gvVbK1q8nr3YHsI5rSV42")
+	    .header("Cookie", "guest_id=v1%3A166927603438120108; guest_id_ads=v1%3A166927603438120108; guest_id_marketing=v1%3A166927603438120108; personalization_id=\"v1_/U2whbVZ7r3qGH9DnE7qVw==\"")
+	    .asString();
+	  return response.getBody();
   }
   
 
