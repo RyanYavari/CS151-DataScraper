@@ -97,7 +97,7 @@ public class Cs151DataScraperApplication {
 		Collections.addAll(h, temp1);
 		createBusiness(businessName, h, k);
 		try {
-			Formatter f = getTwitterData(h, k, keywords, hashtags, numberOfResults);
+			Formatter f = getTwitterData(hashtags, numberOfResults);
 			Business business = user.getBusinesses().get(user.getBusinesses().size() - 1);
 			List<String> handlesTemp = new ArrayList<>();
 			handlesTemp.addAll(f.getUserInfo().keySet());
@@ -128,7 +128,7 @@ public class Cs151DataScraperApplication {
 		user.getBusinesses().add(business);
 	}
 
-	private Formatter getTwitterData(List<String> h, List<String> k, String keywords, String hashtags,
+	private Formatter getTwitterData(String hashtags,
 			String numberOfResults)
 			throws IOException, URISyntaxException, UnirestException {
 				
@@ -140,21 +140,6 @@ public class Cs151DataScraperApplication {
 		System.out.println();
 
 		formattedData.format();
-
-		// for (int i = 1; i < h.size(); i++) {
-		// 	Parser dataTemp = new Parser(h.get(i), Integer.parseInt(numberOfResults));
-		// 	Formatter formattedDataTemp = new Formatter(dataTemp.getOutput());
-
-		// 	dataTemp.print();
-
-		// 	System.out.println();
-
-		// 	formattedDataTemp.format();
-			
-		// 	for (Map.Entry<String, String> pair : formattedDataTemp.getUserInfo().entrySet()) {
-		// 		formattedData.getUserInfo().put(pair.getKey(), pair.getValue());
-		// 	}
-		// }
 
 		formattedData.print();
 		return formattedData;
