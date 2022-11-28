@@ -131,6 +131,7 @@ public class Cs151DataScraperApplication {
 	private Formatter getTwitterData(List<String> h, List<String> k, String keywords, String hashtags,
 			String numberOfResults)
 			throws IOException, URISyntaxException, UnirestException {
+				
 		Parser data = new Parser(hashtags, Integer.parseInt(numberOfResults));
 		Formatter formattedData = new Formatter(data.getOutput());
 

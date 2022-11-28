@@ -50,11 +50,13 @@ export default function Form({
     "Food",
     "Transportation",
     "Education",
-    "Health",
     "Entertainment",
     "Finance",
     "Manufacturing",
     "Fashion",
+    "Social Media",
+    "Nonprofit",
+    "Healthcare"
   ];
 
   function createNewBusiness() {
