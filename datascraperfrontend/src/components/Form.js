@@ -66,7 +66,7 @@ export default function Form({
       showError(true);
     } else {
       for (var i = 0; i < hashtags.length; i++) {
-        hashtags[i] = hashtags[i].replace(/\s+/g, ",");
+        hashtags[i] = hashtags[i].replace(/\s+/g, "_");
       }
       fetchData();
     }

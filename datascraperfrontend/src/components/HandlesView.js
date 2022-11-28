@@ -38,6 +38,10 @@ export default function HandlesView({
   const hashtags = businesses[businessIdx].hashtags;
   const keywords = businesses[businessIdx].keywords;
 
+  for (var i = 0; i < hashtags.length; i++) {
+    hashtags[i] = hashtags[i].replace("_", " ");
+  }
+  
   function deleteBusiness() {
     fetch("http://localhost:8080/removeBusiness?businessIdx=" + businessIdx)
       .then((response) => response.text())
@@ -52,7 +56,6 @@ export default function HandlesView({
       });
   }
 
-  console.log(handles);
 
   const rows = [];
   for (let i = 0; i < handles.length; i++) {
