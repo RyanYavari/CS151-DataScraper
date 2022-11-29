@@ -8,7 +8,7 @@ class Customer_Support extends React.Component{
         return(
             <div>
                 	<head>
-                        <title>Elements - Solid State by HTML5 UP</title>
+                        <title>Customer Support </title>
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                         <link rel="stylesheet" href="assets/css/main.css" />
@@ -30,7 +30,7 @@ class Customer_Support extends React.Component{
             <h2>Menu</h2>
             <ul class="links">
             <li><a href="/">Home</a></li>
-            <li><a href="/Services">Services</a></li>
+            <li><a href="/Services">Services</a></li> 
             <li><a href="/Customer">Customer Support</a></li>
             <li><a href="/Login">Log In</a></li>
             <li><a href="/signup">Sign Up</a></li>
@@ -81,9 +81,7 @@ class Customer_Support extends React.Component{
                         <li class="icon brands fa-facebook-f"><a href="#">facebook.com/DataScapers</a></li>
                         <li class="icon brands fa-instagram"><a href="#">instagram.com/DataScapers</a></li>
                     </ul>
-                    <ul class="copyright">
-                        <li>&copy; DataScapers Inc. All rights reserved.</li>
-                    </ul>
+
                 </div>
             </div>
         </header>
@@ -91,7 +89,15 @@ class Customer_Support extends React.Component{
 
     </section>
 
-</div>
+            </div>
+            <section id="footer">
+		    <div class="inner">
+
+			<ul class="copyright">
+			<li>&copy; Data-Scaper Inc. All rights reserved.</li><li>API: <a href="/">Data-Scaper</a></li>
+		    </ul>
+			</div>
+			</section>
 
 
             </div>
