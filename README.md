@@ -61,6 +61,9 @@ The market for data scraping is huge as many advertisements are geared towards t
 | [Class Diagram](https://github.com/RyanYavari/CS151-DataScraper/blob/main/diagrams/Class%20Diagram.png)    | The Class Diagram depicts the blueprint of the DataScraper program. In this diagram, objects are modeled to show the differences and relationships between one another, and to describe the functionality of each individual object.       | 
 | [Timing Diagram](https://github.com/RyanYavari/CS151-DataScraper/blob/main/diagrams/Timing%20Diagram.png)    | The Time diagram that depicts the state changes of the Data Scrapper and behavior response of state changes under a given constraint of time.     |  
 
+## Functionality ##
+What better way to reach those consumers than by using the DataScraper’s Bayesian approach in targeting valuable customers. DataScrapers uses a probabilistic approach where data is gathered on enthusiastic customers who have self selected themselves to be a valued customer of your product. This is done by querying the Twitter Application Programming Interface (API) to gather handles of users whose tweets include the inputted keywords. This list of handles is shown to the user as a list of potential customers.
+
 ## Operations ##
 1. The user visits the home page of the Data Scraper website.
 2. They click Login or Signup depending on the existence of their account. They can also click the Services page to see what services Data Scraper provides.
