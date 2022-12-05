@@ -28,6 +28,7 @@ Shirley created and presented every frontend slide except the last frontend slid
     * Wrote the Operations section
     * Updated Use Case and State Diagrams
     * Recorded and uploaded demo
+    * Wrote Steps to Run the Code
     
 ## Problem ##
 Imagine you are a budding new business owner and you are trying to market your product to customers in your area. As a new establishment, you are still trying to build your brand by selling your high quality product to enthusiastic consumers. However, paying for marketing on your local radio station or billboards is costly and does not reach the target demographic. As a new business, you want to reach customers who are known to be enthusiastic about the culture surrounding your product. 
