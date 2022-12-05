@@ -28,6 +28,14 @@ Shirley created and presented every frontend slide except the last frontend slid
     * Wrote the Operations section
     * Updated Use Case and State Diagrams
     * Recorded and uploaded demo
+    
+### Problem ###
+Imagine you are a budding new business owner and you are trying to market your product to customers in your area. As a new establishment, you are still trying to build your brand by selling your high quality product to enthusiastic consumers. However, paying for marketing on your local radio station or billboards is costly and does not reach the target demographic. As a new business, you want to reach customers who are known to be enthusiastic about the culture surrounding your product. 
+
+### Previous Works ####
+The market for data scraping is huge as many advertisements are geared towards target audiences. Without data scraping, businesses wouldn't have an idea of where to start their pitch. Some applications that use data scraping are:
+[1] Supermetrics and
+[2] WebScraper.
 
 ### Snapshot of the Running Program ###
 https://user-images.githubusercontent.com/57884384/205530872-34809ce8-7cb9-47ee-a2d8-738d0c298c13.mp4
