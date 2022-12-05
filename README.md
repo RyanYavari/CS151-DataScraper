@@ -55,7 +55,7 @@ The market for data scraping is huge as many advertisements are geared towards t
 7. The user can also delete a business by clicking the Delete button in the business’s page.
 
 ## Steps to Run the Code ##
-Clone the project and click the run button in your IDE. Or right click Cs151DataScraperApplication.java and click Run As -> Java Application. Then go into your Terminal, enter into the datascraperfrontend directory, and type “npm start”. Make sure Port 8080 and 3000 are open. If not, switch to a different port and try again. 
+Clone the project and click the run button in your IDE. Or right click `Cs151DataScraperApplication.java` and click Run As -> Java Application. Then go into your Terminal, enter into the `datascraperfrontend` directory, and type `npm start`. Make sure Ports 8080 and 3000 are open. If not, switch to a different port and try again. 
 
 ## Snapshot of the Running Program ##
 https://user-images.githubusercontent.com/57884384/205530872-34809ce8-7cb9-47ee-a2d8-738d0c298c13.mp4
