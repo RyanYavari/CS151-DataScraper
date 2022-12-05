@@ -40,3 +40,8 @@ The market for data scraping is huge as many advertisements are geared towards t
 ### Snapshot of the Running Program ###
 https://user-images.githubusercontent.com/57884384/205530872-34809ce8-7cb9-47ee-a2d8-738d0c298c13.mp4
 
+### References ###
+[1] Supermetrics: https://supermetrics.com/?utm_medium=cpc&utm_campaign=listings&utm_source=capterra
+
+[2] Webscraper: https://webscraper.io/
+
