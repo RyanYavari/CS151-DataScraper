@@ -248,7 +248,7 @@ export default function Signup() {
               }}
             >
               <label>
-                Have an account? <Link to="/">Log in</Link>!
+                Have an account? <Link to="/Login">Log in</Link>!
               </label>
             </ListItem>
           </List>
