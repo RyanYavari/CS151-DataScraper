@@ -73,6 +73,9 @@ What better way to reach those consumers than by using the DataScraper’s Bayes
 6. Clicking the Generate button will generate a new business and Data Scraper will give a table of Twitter handles that match the keywords for the user to use in their social media marketing campaign. 
 7. The user can also delete a business by clicking the Delete button in the business’s page.
 
+## Solution ##
+The way we’ve solved the problem of connecting marketers with their target audience is by utilizing the “Search Tweet” and “Tweet Lookup” endpoints on Twitter API v2. In our application, we gather client input keywords and insert them into the “Tweet Lookup” endpoint to gather an array of recent tweets relating to the keywords. Now, we have the tweets of the target audience. In order to actually connect the marketers with these users, we utilized the “Tweet Lookup” endpoint to acquire the username handles from the array of tweets. Finally, we show the client a list of both the tweet URLS and the username handles on our beautiful GUI. At last, the client now has access to contact the target audience with the context of the tweet. 
+
 ## Steps to Run the Code ##
 Clone the project and click the run button in your IDE. Or right click `Cs151DataScraperApplication.java` and click Run As -> Java Application. Then go into your Terminal, enter into the `datascraperfrontend` directory, and type `npm start`. The program will attempt to run using Ports 8080 and 3000. If those two ports on your device are occupied, type `Y` when your Terminal asks if you would like to switch ports. 
 
