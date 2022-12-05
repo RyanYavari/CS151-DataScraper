@@ -45,6 +45,16 @@ The market for data scraping is huge as many advertisements are geared towards t
 | [Class Diagram](https://github.com/RyanYavari/CS151-DataScraper/blob/main/diagrams/Class%20Diagram.png)    | The Class Diagram depicts the blueprint of the DataScraper program. In this diagram, objects are modeled to show the differences and relationships between one another, and to describe the functionality of each individual object.       | 
 | [Timing Diagram](https://github.com/RyanYavari/CS151-DataScraper/blob/main/diagrams/Timing%20Diagram.png)    | The Time diagram that depicts the state changes of the Data Scrapper and behavior response of state changes under a given constraint of time.     |  
 
+### Operations ###
+1. The user visits the home page of the Data Scraper website.
+2. They click Login or Signup depending on the existence of their account. They can also click the Services page to see what services Data Scraper provides.
+3. After entering their user information, Data Scraper verifies their account and allows the user to view their dashboard.
+4. The user can create a new business/data scraping profile through the form or logout using the drop down menu attached to the logo.
+5. Creating a business/data scraping profile requires the user to input a business name, select the business’s type, input keywords that the business encapsulates, and input the number of results desired by the user.
+6. Clicking the Generate button will generate a new business and Data Scraper will give a table of Twitter handles that match the keywords for the user to use in their social media marketing campaign. 
+7. The user can also delete a business by clicking the Delete button in the business’s page.
+
+
 ### Snapshot of the Running Program ###
 https://user-images.githubusercontent.com/57884384/205530872-34809ce8-7cb9-47ee-a2d8-738d0c298c13.mp4
 
