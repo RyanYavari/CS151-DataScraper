@@ -30,6 +30,21 @@ Shirley created and presented every frontend slide except the last frontend slid
     * Recorded and uploaded demo
     * Wrote Steps to Run the Code
     
+* Ryan
+  * Code Contribution
+    * Created the backend with Twitter API v2 and Postman
+      * Created "Parser" class
+        * Contains a "search" method that utilizes a bearer key to return data from Twitter in JSON Format
+        * Contains a "searchUsername" method that utilizes a bearer key to return user handles from Twitter in JSON Format
+      * Created "Formatter" class
+        * Contains a "format" method that inputs JSON data from the "search" method and outputs a HashMap of data
+          * Added exception handling to prevent the user from inputting faulty keywords
+        * Contains a "formURL" method that inputs a username and Twitter ID and outputs a Twitter URL
+      * Set up Twitter Developer Account
+        * Filled out forms to acquire security tokens/keys and "Elevated" access to Twitter's database
+
+        
+    
 ## Problem ##
 Imagine you are a budding new business owner and you are trying to market your product to customers in your area. As a new establishment, you are still trying to build your brand by selling your high quality product to enthusiastic consumers. However, paying for marketing on your local radio station or billboards is costly and does not reach the target demographic. As a new business, you want to reach customers who are known to be enthusiastic about the culture surrounding your product. 
 
