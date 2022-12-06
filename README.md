@@ -44,11 +44,11 @@
         * Contains a "formURL" method that inputs a username and Twitter ID and outputs a Twitter URL
       * Set up Twitter Developer Account
         * Filled out forms to acquire security tokens/keys and "Elevated" access to Twitter's database
- * Report Contribution
-   * Wrote the Class Diagram
-   * Updated Solutions 
-   * Formatted the report into GitHub
-   * Described his Individual Contributions
+  * Report Contribution
+    * Wrote the Class Diagram
+    * Updated Solutions 
+    * Formatted the report into GitHub
+    * Described his Individual Contributions
  
 
 * Emanuel Contribution
