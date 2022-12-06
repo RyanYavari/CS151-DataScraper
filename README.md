@@ -2,11 +2,13 @@
 ### Group 4: Shirley Li, Emanuel Navarro-Ortiz, Ryan Yavari ###
 
 ## Proposal Contributions ##
-Shirley wrote the High-Level Plan and Approach as well as the User Operations.
-
+ * Shirley wrote the High-Level Plan and Approach as well as the User Operations.
+ * Ryan wrote the solution as well as formatted the README.txt file
+ * Emmanuel wrote the Functionality and Problem/Issue
 ## Project Presentation Contributions ##
-Shirley created and presented every frontend slide except the last frontend slide. She also operated the demo during the presentation.
-
+ * Shirley created and presented every frontend slide except the last frontend slide. She also operated the demo during the presentation.
+ * Ryan created and presented all the slides on backend as well as narrated over the demo during the presentation.
+ * Emmanuel created and presented the slides introducing the project and it's purpose, as well as operated the demo during the presentation.
 ## Code and Report Contributions ##
 * Shirley
   * Code Contribution
@@ -42,6 +44,29 @@ Shirley created and presented every frontend slide except the last frontend slid
         * Contains a "formURL" method that inputs a username and Twitter ID and outputs a Twitter URL
       * Set up Twitter Developer Account
         * Filled out forms to acquire security tokens/keys and "Elevated" access to Twitter's database
+ * Report Contribution
+   * Wrote the Class Diagram
+   * Updated Solutions 
+   * Formatted the report into GitHub
+   * Described his Individual Contributions
+ 
+
+* Emanuel Contribution
+  * Created created front end login page with html and javascript
+    * Main page [1]
+    * Services page
+    * Customer Support [2]
+    * Slide Show [3]
+    * Initialize databases
+    * Attained alternate developer access key via twitter( our program used Ryans)
+  * Wrote code for front and and database
+    * Connected all pages together with react
+    * Imported javascript libraries to load with front end(used template for website) [4]
+    * Researched multiple frameworks
+* Report
+    * Time diagram -Created a time diagram that show how the program should be executed
+    * Problem Statement - Developed a problem statement which gave us a problem to solve
+    * Functionality -Generated functional solution to problem statement
 
         
     
